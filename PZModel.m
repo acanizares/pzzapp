@@ -226,9 +226,9 @@ NSString* PZModelPreferencesUpdated  = @"PZModelPreferencesUpdated";
 	level    = 1;
   board    = nil;
   pieces   = nil;
-  image    = [[NSURL      alloc] init];
-	size     = [[PZSize alloc] init];
-	emptyPos = [[PZPos  alloc] init];
+  image    = [[NSImage alloc] init];
+	size     = [[PZSize  alloc] init];
+	emptyPos = [[PZPos   alloc] init];
 
   if (! [self setPrefs: prefs]) return nil;
 
@@ -332,9 +332,9 @@ NSString* PZModelPreferencesUpdated  = @"PZModelPreferencesUpdated";
     return NO;
 
   int tl = [(NSNumber*)[dict objectForKey:@"Level"] intValue];
-  if (! [self isValidLevel: tl])
-    return NO;
   
+    /// WARNING! The order of these things is important. This code is brittle and
+    // quite ugly.
   if (! [newImage isEqual:image]) {
 		[image autorelease];
 		image = [newImage retain];
@@ -344,7 +344,7 @@ NSString* PZModelPreferencesUpdated  = @"PZModelPreferencesUpdated";
   
   if (! [size isEqual:ts]) {
 		[size valuesFrom:ts];
-		[self resize];  // WARNING! This needs a loaded image!
+		[self resize];  // This needs a loaded image!
     changes = YES;
 	}
 	
@@ -354,8 +354,10 @@ NSString* PZModelPreferencesUpdated  = @"PZModelPreferencesUpdated";
     [emptyPos valuesFrom: tp];
     changes = YES;
   }
-	
-  if (level != tl) {
+  
+  if (! [self isValidLevel: tl]) {
+    return NO;
+  } else if (level != tl) {
     level   = tl;
     changes = YES;
   }

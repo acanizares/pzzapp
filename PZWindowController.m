@@ -79,6 +79,7 @@
 
 @implementation PZWindowController
 
+  /// FIXME. This is WRONG, crashes if puzz initWithPrefs: returns nil.
 - (id) initWithPrefs: (NSMutableDictionary*) prefs
 {
   currSheetMode = none;	

@@ -91,10 +91,14 @@
   controller = [[PZWindowController alloc] initWithPrefs: puzzDefaults];
   [self addWindowController:controller];
   [controller showWindow:self];
+  
     // FIXME! HACK: Resize model and matrix to display the first time.
-  NSUserDefaults *defaults = [[NSUserDefaultsController sharedUserDefaultsController] defaults];
-  [controller changeSizeWithRows:[defaults integerForKey:@"Rows"]
-                         columns:[defaults integerForKey:@"Columns"]];
+  NSUserDefaults *defaults = [[NSUserDefaultsController sharedUserDefaultsController]
+                              defaults];
+  int r = [defaults integerForKey:@"Rows"];
+  int c = [defaults integerForKey:@"Columns"];
+  [controller changeSizeWithRows:r+1 columns:c+1];
+  [controller changeSizeWithRows:r columns:c];
 }
 
 - (BOOL) loadImageFromURL: (NSURL*) url {
