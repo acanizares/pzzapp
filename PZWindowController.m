@@ -315,9 +315,7 @@
     [puzz reset];
     [self redrawAll];
     //Comienza el modo de edici—n de la pieza en blanco.
-    NSLog(@"SEL = %@", NSStringFromSelector(@selector(doTakePieceOff:)));
     [matrix setAction:@selector(doTakePieceOff:)];
-    [matrix setTarget:self];
   };
 
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ShowChooseEmptyBlockSheet"]) {
