@@ -143,6 +143,7 @@ static PZPreferencesWindowController *_sharedPZPreferencesWindowController = nil
 }
 
 - (IBAction) changeBackgroundColor: (id) sender {
+ //voy a seguir por aquí
 }
 - (IBAction) configureAlertDialogs: (id) sender {
 }
