@@ -1,0 +1,32 @@
+Pel:
+	- Puzzle Model @done(2012-03-31)
+	- Bugs!!! @done(2012-04-02)
+	- Undo / redo @done(2012-04-02)
+		http://www.cocoadev.com/index.pl?NSUndoManagerTutorial
+	- Error handling
+		http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ErrorHandlingCocoa/ErrorHandling/ErrorHandling.html
+Future Pel:
+		- Automatically save state & history
+Pil:
+	- Initial release @done(2012-03-30)
+	- Alert sheets @done(2012-04-02)
+	- Drag  & Drop
+	- Preferences
+		- Window @done(2012-04-01)
+		- Drag & Drop @done(2012-04-02)
+		- Apply globals
+		- Apply to current puzzle
+Future Pil:
+		- Icon
+		- Welcome dialog
+		- Fix? alert sheets (see NSAlert’s -setShowsSuppressionButton: and -setAccessoryView: methods)
+
+Deadline 5pm:
+	- Game menu
+		- Check menu items: validateMenuItem: or validateUserInterfaceItem:
+			http://www.cocoadev.com/index.pl?CheckedMenuItemsForDocumentBasedApp
+			http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/MenuList/Articles/EnablingMenuItems.html
+		
+Future us:
+	- Selectable empty cell in the preferences panel, using the PZDropImageView, etc.
+
