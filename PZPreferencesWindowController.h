@@ -25,6 +25,7 @@
 	IBOutlet NSTextField *generalImageViewLabel;
 	IBOutlet NSPopUpButton *generalLevelPopUp;
 	IBOutlet NSPopUpButton *generalSizePopUp;
+	IBOutlet NSColorWell *generalColorWell;
 	int currentViewTag;	
 }
 
