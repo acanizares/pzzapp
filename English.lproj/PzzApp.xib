@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="543"/>
+			<integer value="536"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -388,7 +388,7 @@
 								<object class="NSMenuItem" id="599366777">
 									<reference key="NSMenu" ref="884685428"/>
 									<string key="NSTitle">Choose empty cell...</string>
-									<string type="base64-UTF8" key="NSKeyEquiv">IA</string>
+									<string key="NSKeyEquiv">e</string>
 									<int key="NSKeyEquivModMask">1048576</int>
 									<int key="NSMnemonicLoc">2147483647</int>
 									<reference key="NSOnImage" ref="1033313550"/>
@@ -1634,7 +1634,7 @@
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
-					<string>{{395, 583}, {125, 93}}</string>
+					<string>{{282, 614}, {125, 93}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 					<string>{{197, 734}, {243, 243}}</string>
@@ -1652,7 +1652,7 @@
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
-					<string>{{546, 603}, {194, 73}}</string>
+					<string>{{433, 634}, {194, 73}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 					<string>{{525, 802}, {197, 73}}</string>
@@ -1662,7 +1662,7 @@
 					<string>{74, 862}</string>
 					<string>{{11, 977}, {478, 20}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{496, 633}, {231, 43}}</string>
+					<string>{{383, 664}, {231, 43}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{475, 832}, {234, 43}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1719,7 +1719,7 @@
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
-					<string>{{138, 500}, {196, 203}}</string>
+					<string>{{240, 504}, {196, 203}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 					<string>{{155, 774}, {199, 203}}</string>
@@ -1897,16 +1897,12 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>alertSheet</string>
 							<string>alertSheetCheck</string>
-							<string>currLevelItem</string>
-							<string>currSizeItem</string>
 							<string>matrix</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>NSPanel</string>
 							<string>NSButton</string>
-							<string>NSMenuItem</string>
-							<string>NSMenuItem</string>
 							<string>NSMatrix</string>
 						</object>
 					</object>
@@ -1916,8 +1912,6 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>alertSheet</string>
 							<string>alertSheetCheck</string>
-							<string>currLevelItem</string>
-							<string>currSizeItem</string>
 							<string>matrix</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -1929,14 +1923,6 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">alertSheetCheck</string>
 								<string key="candidateClassName">NSButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">currLevelItem</string>
-								<string key="candidateClassName">NSMenuItem</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">currSizeItem</string>
-								<string key="candidateClassName">NSMenuItem</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">matrix</string>

@@ -312,9 +312,12 @@
 - (IBAction) doChangeEmptyCell: (id) sender
 {
   AlertBlock codeAfterOKButton = ^(void) {
-    [self restart];
+    [puzz reset];
+    [self redrawAll];
     //Comienza el modo de edici—n de la pieza en blanco.
-    [matrix setAction:@selector(takeSelectedPieceOff:)];
+    NSLog(@"SEL = %@", NSStringFromSelector(@selector(doTakePieceOff:)));
+    [matrix setAction:@selector(doTakePieceOff:)];
+    [matrix setTarget:self];
   };
 
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ShowChooseEmptyBlockSheet"]) {
@@ -325,17 +328,18 @@
   }
 }
 
-- (void) takeSelectedPieceOff: (id) sender
+- (void) doTakePieceOff: (id) sender
 {
-	NSInteger r;
-	NSInteger c;
+	NSInteger r, c;
 	[matrix getRow:&r column:&c ofCell:[matrix selectedCell]];
+  
 	[puzzlePrefs setObject:[NSNumber numberWithInt:c] forKey:@"EmptyX"];
   [puzzlePrefs setObject:[NSNumber numberWithInt:r] forKey:@"EmptyY"];
 	[puzz setPrefs:puzzlePrefs];
+  
 	[self takeEmptyPieceOff];
-		//Termina el modo de edici—n de la pieza en blanco.
-	[matrix setAction:@selector(movePieceView:)];
+		// Termina el modo de edici—n de la pieza en blanco.
+	[matrix setAction:@selector(doMovePiece:)];
 }
 
 - (void) doShuffle: (id) sender
@@ -360,7 +364,7 @@
     codeAfterOKButton();
 }
 
-- (IBAction) movePieceView: (id) sender
+- (IBAction) doMovePiece: (id) sender
 {
 	NSInteger r, c;
 	[matrix getRow:&r column:&c ofCell:[matrix selectedCell]];
