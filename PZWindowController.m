@@ -81,8 +81,9 @@
 - (id) initWithPrefs: (NSMutableDictionary*) prefs
 {
   currSheetMode = none;	
-	puzzlePrefs = [[NSMutableDictionary alloc] initWithDictionary: prefs];
-	puzz = [[PZModel alloc] initWithPrefs:puzzlePrefs];
+	puzzlePrefs   = [[NSMutableDictionary alloc] initWithDictionary: prefs];
+	puzz          = [[PZModel alloc] initWithPrefs:puzzlePrefs];
+  matrixBgColor = [prefs valueForKey:@"BackgroundColor"];
 
   if (puzz == nil || ! (self = [super initWithWindowNibName:@"PZWindow"])) {
     [self release];
@@ -108,6 +109,7 @@
   // same as the default cell, has different properties, so we must set it here.
   PZButtonCell *prototype = (PZButtonCell*)[matrix cellAtRow:0 column:0];
 	[matrix setPrototype:prototype];
+  [matrix setBackgroundColor:matrixBgColor];
 }
 
 
@@ -145,7 +147,9 @@
 
 - (void) changeSizeWithRows: (int) r columns: (int) c 
 {
-	if (r == puzz.size.rows && c == puzz.size.columns) return;
+	if ((r == puzz.size.rows && c == puzz.size.columns) ||
+      r < 1 || c < 1 || r > MAX_ROWS || c > MAX_COLS)
+    return;
 
 	NSSize  s = [[[super window] contentView] frame].size;
 	s.width  /= c;
@@ -248,7 +252,7 @@
     [[NSAnimationContext currentContext] setDuration:0.5];
 	
     //PZButtonCell* cell = [matrix cellAtRow:puzz.emptyPos.y column:puzz.emptyPos.x];
-    [[matrix animator] setDelegate:self];
+    [(NSAnimation*)[matrix animator] setDelegate:self];
     [[matrix animator] setAlphaValue: 0.0];
 	[NSAnimationContext endGrouping];
 

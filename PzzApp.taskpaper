@@ -19,14 +19,14 @@ Pil:
 Future Pil:
 		- Icon
 		- Welcome dialog
-		- Fix? alert sheets (see NSAlertÕs -setShowsSuppressionButton: and -setAccessoryView: methods)
+		- Fix? alert sheets (see NSAlertâ€™s -setShowsSuppressionButton: and -setAccessoryView: methods)
 
 Deadline 5pm:
 	- Game menu
-		- Check menu items: validateMenuItem: or validateUserInterfaceItem:
+		- Check menu items: validateMenuItem: or validateUserInterfaceItem: @done(2012-04-02)
 			http://www.cocoadev.com/index.pl?CheckedMenuItemsForDocumentBasedApp
 			http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/MenuList/Articles/EnablingMenuItems.html
 		
 Future us:
 	- Selectable empty cell in the preferences panel, using the PZDropImageView, etc.
-
+	
