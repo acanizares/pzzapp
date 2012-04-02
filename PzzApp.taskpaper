@@ -6,7 +6,8 @@ Pel:
 	- Error handling
 		http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ErrorHandlingCocoa/ErrorHandling/ErrorHandling.html
 Future Pel:
-		- Automatically save state & history
+	- Fix usage of first responder for actions in the preferences. The PZWindowController is NOT in the chain but it holds the methods.
+	- Automatically save state & history
 Pil:
 	- Initial release @done(2012-03-30)
 	- Alert sheets @done(2012-04-02)
@@ -17,11 +18,11 @@ Pil:
 		- Apply globals @done(2012-04-03)
 		- Apply to current puzzle
 Future Pil:
-		- Icon
-		- Welcome dialog
-		- Fix detection of backspace key in the preference dialog. Someone says somewhere:
-			"As far as I know, there is no enum or list of key codes. However, to get similar behavior, you can call interpretKeyEvents: in keyDown: which will call appropriate action methods, all of which are documented in NSResponder (e.g. moveLeft:, insertTab:, etc.)"
-		- Fix? alert sheets (see NSAlert’s -setShowsSuppressionButton: and -setAccessoryView: methods)
+	- Icon
+	- Welcome dialog
+	- Fix detection of backspace key in the preference dialog. Someone says somewhere:
+		"As far as I know, there is no enum or list of key codes. However, to get similar behavior, you can call interpretKeyEvents: in keyDown: which will call appropriate action methods, all of which are documented in NSResponder (e.g. moveLeft:, insertTab:, etc.)"
+	- Fix? alert sheets (see NSAlert’s -setShowsSuppressionButton: and -setAccessoryView: methods)
 
 Deadline 5pm:
 	- Game menu @done(2012-04-03)
