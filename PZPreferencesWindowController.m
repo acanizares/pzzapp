@@ -145,9 +145,10 @@ static PZPreferencesWindowController *_sharedPZPreferencesWindowController = nil
 }
 
 - (IBAction) changeBackgroundColor: (id) sender {
-	[[[NSUserDefaultsController sharedUserDefaultsController] defaults] 
-	 setColor: [sender color] forKey:@"BackgroundColor"];
+  [[[NSUserDefaultsController sharedUserDefaultsController] defaults] 
+   setColor: [sender color] forKey:@"BackgroundColor"];
 }
+
 - (IBAction) configureAlertDialogs: (id) sender {
 }
 

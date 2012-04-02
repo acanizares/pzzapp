@@ -81,8 +81,9 @@
 - (id) initWithPrefs: (NSMutableDictionary*) prefs
 {
   currSheetMode = none;	
-	puzzlePrefs = [[NSMutableDictionary alloc] initWithDictionary: prefs];
-	puzz = [[PZModel alloc] initWithPrefs:puzzlePrefs];
+	puzzlePrefs   = [[NSMutableDictionary alloc] initWithDictionary: prefs];
+	puzz          = [[PZModel alloc] initWithPrefs:puzzlePrefs];
+  matrixBgColor = [prefs valueForKey:@"BackgroundColor"];
 
   if (puzz == nil || ! (self = [super initWithWindowNibName:@"PZWindow"])) {
     [self release];
@@ -108,6 +109,7 @@
   // same as the default cell, has different properties, so we must set it here.
   PZButtonCell *prototype = (PZButtonCell*)[matrix cellAtRow:0 column:0];
 	[matrix setPrototype:prototype];
+  [matrix setBackgroundColor:matrixBgColor];
 }
 
 
@@ -145,7 +147,9 @@
 
 - (void) changeSizeWithRows: (int) r columns: (int) c 
 {
-	if (r == puzz.size.rows && c == puzz.size.columns) return;
+	if ((r == puzz.size.rows && c == puzz.size.columns) ||
+      r < 1 || c < 1 || r > MAX_ROWS || c > MAX_COLS)
+    return;
 
 	NSSize  s = [[[super window] contentView] frame].size;
 	s.width  /= c;
@@ -248,7 +252,7 @@
     [[NSAnimationContext currentContext] setDuration:0.5];
 	
     //PZButtonCell* cell = [matrix cellAtRow:puzz.emptyPos.y column:puzz.emptyPos.x];
-    [[matrix animator] setDelegate:self];
+    [(NSAnimation*)[matrix animator] setDelegate:self];
     [[matrix animator] setAlphaValue: 0.0];
 	[NSAnimationContext endGrouping];
 
@@ -312,9 +316,10 @@
 - (IBAction) doChangeEmptyCell: (id) sender
 {
   AlertBlock codeAfterOKButton = ^(void) {
-    [self restart];
+    [puzz reset];
+    [self redrawAll];
     //Comienza el modo de edici—n de la pieza en blanco.
-    [matrix setAction:@selector(takeSelectedPieceOff:)];
+    [matrix setAction:@selector(doTakePieceOff:)];
   };
 
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ShowChooseEmptyBlockSheet"]) {
@@ -325,17 +330,18 @@
   }
 }
 
-- (void) takeSelectedPieceOff: (id) sender
+- (void) doTakePieceOff: (id) sender
 {
-	NSInteger r;
-	NSInteger c;
+	NSInteger r, c;
 	[matrix getRow:&r column:&c ofCell:[matrix selectedCell]];
+  
 	[puzzlePrefs setObject:[NSNumber numberWithInt:c] forKey:@"EmptyX"];
   [puzzlePrefs setObject:[NSNumber numberWithInt:r] forKey:@"EmptyY"];
 	[puzz setPrefs:puzzlePrefs];
+  
 	[self takeEmptyPieceOff];
-		//Termina el modo de edici—n de la pieza en blanco.
-	[matrix setAction:@selector(movePieceView:)];
+		// Termina el modo de edici—n de la pieza en blanco.
+	[matrix setAction:@selector(doMovePiece:)];
 }
 
 - (void) doShuffle: (id) sender
@@ -360,7 +366,7 @@
     codeAfterOKButton();
 }
 
-- (IBAction) movePieceView: (id) sender
+- (IBAction) doMovePiece: (id) sender
 {
 	NSInteger r, c;
 	[matrix getRow:&r column:&c ofCell:[matrix selectedCell]];

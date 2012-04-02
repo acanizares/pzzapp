@@ -29,7 +29,7 @@
 															 @"YES", @"ShowChangeSizeSheet", 
 															 @"YES", @"ShowChooseEmptyBlockSheet",
 															 @"YES", @"ShowChooseImageSheet", 
-															 [NSNumber numberWithInt:20], @"Level", 
+															 [NSNumber numberWithInt:25], @"Level", 
 															 [NSNumber numberWithInt:4], @"Rows",
 															 [NSNumber numberWithInt:4], @"Columns",
 															 [NSNumber numberWithInt:0], @"EmptyX",

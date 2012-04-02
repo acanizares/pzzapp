@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="100023"/>
+			<integer value="6"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -93,7 +93,8 @@
 								<int key="NSPeriodicDelay">400</int>
 								<int key="NSPeriodicInterval">75</int>
 							</object>
-							<reference key="NSSelectedCell" ref="310124021"/>
+							<int key="NSSelectedRow">-1</int>
+							<int key="NSSelectedCol">-1</int>
 							<object class="NSColor" key="NSBackgroundColor" id="179039834">
 								<int key="NSColorSpace">6</int>
 								<string key="NSCatalogName">System</string>
@@ -328,14 +329,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">movePieceView:</string>
-						<reference key="source" ref="512844837"/>
-						<reference key="destination" ref="310124021"/>
-					</object>
-					<int key="connectionID">100045</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
 						<string key="label">showOrNotAgain:</string>
 						<reference key="source" ref="512844837"/>
 						<reference key="destination" ref="964104128"/>
@@ -344,11 +337,11 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">movePieceView:</string>
+						<string key="label">doMovePiece:</string>
 						<reference key="source" ref="512844837"/>
-						<reference key="destination" ref="321095084"/>
+						<reference key="destination" ref="705036739"/>
 					</object>
-					<int key="connectionID">100053</int>
+					<int key="connectionID">100055</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -626,7 +619,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">100053</int>
+			<int key="maxID">100055</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -648,13 +641,13 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>alertSheetCancel:</string>
 							<string>alertSheetOK:</string>
-							<string>changeEmptyCell:</string>
-							<string>changeLevel:</string>
-							<string>changeSize:</string>
-							<string>movePieceView:</string>
-							<string>restartView:</string>
+							<string>doChangeEmptyCell:</string>
+							<string>doChangeLevel:</string>
+							<string>doChangeSize:</string>
+							<string>doMovePiece:</string>
+							<string>doRestart:</string>
+							<string>doShuffle:</string>
 							<string>showOrNotAgain:</string>
-							<string>shuffleView:</string>
 							<string>takeSelectedPieceOff:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -677,13 +670,13 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>alertSheetCancel:</string>
 							<string>alertSheetOK:</string>
-							<string>changeEmptyCell:</string>
-							<string>changeLevel:</string>
-							<string>changeSize:</string>
-							<string>movePieceView:</string>
-							<string>restartView:</string>
+							<string>doChangeEmptyCell:</string>
+							<string>doChangeLevel:</string>
+							<string>doChangeSize:</string>
+							<string>doMovePiece:</string>
+							<string>doRestart:</string>
+							<string>doShuffle:</string>
 							<string>showOrNotAgain:</string>
-							<string>shuffleView:</string>
 							<string>takeSelectedPieceOff:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -697,31 +690,31 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
-								<string key="name">changeEmptyCell:</string>
+								<string key="name">doChangeEmptyCell:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
-								<string key="name">changeLevel:</string>
+								<string key="name">doChangeLevel:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
-								<string key="name">changeSize:</string>
+								<string key="name">doChangeSize:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
-								<string key="name">movePieceView:</string>
+								<string key="name">doMovePiece:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
-								<string key="name">restartView:</string>
+								<string key="name">doRestart:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">doShuffle:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">showOrNotAgain:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">shuffleView:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -736,16 +729,12 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>alertSheet</string>
 							<string>alertSheetCheck</string>
-							<string>currLevelItem</string>
-							<string>currSizeItem</string>
 							<string>matrix</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>NSPanel</string>
 							<string>NSButton</string>
-							<string>NSMenuItem</string>
-							<string>NSMenuItem</string>
 							<string>NSMatrix</string>
 						</object>
 					</object>
@@ -755,8 +744,6 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>alertSheet</string>
 							<string>alertSheetCheck</string>
-							<string>currLevelItem</string>
-							<string>currSizeItem</string>
 							<string>matrix</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -768,14 +755,6 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">alertSheetCheck</string>
 								<string key="candidateClassName">NSButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">currLevelItem</string>
-								<string key="candidateClassName">NSMenuItem</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">currSizeItem</string>
-								<string key="candidateClassName">NSMenuItem</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">matrix</string>
@@ -893,14 +872,6 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="313432402">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">AppKit.framework/Headers/NSMenu.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSMenuItem</string>
-					<string key="superclassName">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="622199464">
-						<string key="majorKey">IBFrameworkSource</string>
-						<string key="minorKey">AppKit.framework/Headers/NSMenuItem.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -1195,7 +1166,10 @@
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">NSView</string>
-					<reference key="sourceIdentifier" ref="622199464"/>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSMenuItem.h</string>
+					</object>
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">NSView</string>

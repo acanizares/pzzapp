@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1DDD582C0DA1D0D100B32029 /* PZWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58280DA1D0D100B32029 /* PZWindow.xib */; };
 		1DDD582D0DA1D0D100B32029 /* PzzApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD582A0DA1D0D100B32029 /* PzzApp.xib */; };
+		49C516CA152A2B0C002066E7 /* NSUserDefaultsWithExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C516C9152A2B0C002066E7 /* NSUserDefaultsWithExtras.m */; };
 		8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
 		8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165FFE840EACC02AAC07 /* InfoPlist.strings */; };
 		8D15AC310486D014006FF6A4 /* PZDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4ACFDCFA73011CA2CEA /* PZDocument.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC320486D014006FF6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
-		A108E9F7152A1F9E00EC7774 /* NSUserDefaultsWithExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = A108E9F6152A1F9E00EC7774 /* NSUserDefaultsWithExtras.m */; };
 		A135B7CF1528A1A300921464 /* PZAboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A135B7CD1528A1A300921464 /* PZAboutWindowController.m */; };
 		A135B7D51528A37A00921464 /* About.xib in Resources */ = {isa = PBXBuildFile; fileRef = A135B7D41528A37A00921464 /* About.xib */; };
 		A135B7E51528A79F00921464 /* PZApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A135B7E41528A79F00921464 /* PZApplicationDelegate.m */; };
@@ -21,14 +22,14 @@
 		A135B80E1528AB8200921464 /* PZPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A135B80D1528AB8200921464 /* PZPreferencesWindowController.m */; };
 		A135B8A71528C46A00921464 /* PZModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A135B8A61528C46A00921464 /* PZModel.m */; };
 		A135B8F11528CE2600921464 /* Frog.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = A135B8F01528CE2600921464 /* Frog.jpeg */; };
-		A135BA271529ECD800921464 /* PZWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A135BA261529ECD800921464 /* PZWindowController.m */; };
-		A135BA421529EDAB00921464 /* PZWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A135BA401529EDAB00921464 /* PZWindow.xib */; };
+		A135B8F41528CE8700921464 /* PZWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A135B8F31528CE8700921464 /* PZWindowController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		089C1660FE840EACC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FBA07B3F13500E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		1DDD58290DA1D0D100B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/PZWindow.xib; sourceTree = "<group>"; };
 		1DDD582B0DA1D0D100B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/PzzApp.xib; sourceTree = "<group>"; };
 		2564AD2C0F5327BB00F57823 /* PzzApp_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PzzApp_Prefix.pch; sourceTree = "<group>"; };
 		2A37F4ACFDCFA73011CA2CEA /* PZDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PZDocument.m; sourceTree = "<group>"; };
@@ -37,10 +38,10 @@
 		2A37F4BAFDCFA73011CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = English; path = English.lproj/Credits.rtf; sourceTree = "<group>"; };
 		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		49C516C8152A2B0C002066E7 /* NSUserDefaultsWithExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSUserDefaultsWithExtras.h; sourceTree = "<group>"; };
+		49C516C9152A2B0C002066E7 /* NSUserDefaultsWithExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSUserDefaultsWithExtras.m; sourceTree = "<group>"; };
 		8D15AC360486D014006FF6A4 /* PzzApp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PzzApp-Info.plist"; sourceTree = "<group>"; };
 		8D15AC370486D014006FF6A4 /* PzzApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PzzApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A108E9F5152A1F9E00EC7774 /* NSUserDefaultsWithExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSUserDefaultsWithExtras.h; sourceTree = "<group>"; };
-		A108E9F6152A1F9E00EC7774 /* NSUserDefaultsWithExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSUserDefaultsWithExtras.m; sourceTree = "<group>"; };
 		A135B7CD1528A1A300921464 /* PZAboutWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PZAboutWindowController.m; sourceTree = "<group>"; };
 		A135B7CE1528A1A300921464 /* PZAboutWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PZAboutWindowController.h; sourceTree = "<group>"; };
 		A135B7D41528A37A00921464 /* About.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = About.xib; sourceTree = "<group>"; };
@@ -52,9 +53,8 @@
 		A135B8A51528C46A00921464 /* PZModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PZModel.h; sourceTree = "<group>"; };
 		A135B8A61528C46A00921464 /* PZModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PZModel.m; sourceTree = "<group>"; };
 		A135B8F01528CE2600921464 /* Frog.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Frog.jpeg; sourceTree = "<group>"; };
-		A135BA251529ECD800921464 /* PZWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PZWindowController.h; sourceTree = "<group>"; };
-		A135BA261529ECD800921464 /* PZWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PZWindowController.m; sourceTree = "<group>"; };
-		A135BA411529EDAB00921464 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/PZWindow.xib; sourceTree = "<group>"; };
+		A135B8F21528CE8700921464 /* PZWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PZWindowController.h; sourceTree = "<group>"; };
+		A135B8F31528CE8700921464 /* PZWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PZWindowController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +110,8 @@
 		2A37F4ABFDCFA73011CA2CEA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				49C516C8152A2B0C002066E7 /* NSUserDefaultsWithExtras.h */,
+				49C516C9152A2B0C002066E7 /* NSUserDefaultsWithExtras.m */,
 				A135B7CE1528A1A300921464 /* PZAboutWindowController.h */,
 				A135B7CD1528A1A300921464 /* PZAboutWindowController.m */,
 				A135B7E31528A79F00921464 /* PZApplicationDelegate.h */,
@@ -120,10 +122,8 @@
 				A135B8A61528C46A00921464 /* PZModel.m */,
 				A135B80C1528AB8200921464 /* PZPreferencesWindowController.h */,
 				A135B80D1528AB8200921464 /* PZPreferencesWindowController.m */,
-				A135BA251529ECD800921464 /* PZWindowController.h */,
-				A135BA261529ECD800921464 /* PZWindowController.m */,
-				A108E9F5152A1F9E00EC7774 /* NSUserDefaultsWithExtras.h */,
-				A108E9F6152A1F9E00EC7774 /* NSUserDefaultsWithExtras.m */,
+				A135B8F21528CE8700921464 /* PZWindowController.h */,
+				A135B8F31528CE8700921464 /* PZWindowController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -140,11 +140,11 @@
 		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A135BA401529EDAB00921464 /* PZWindow.xib */,
 				A135B8F01528CE2600921464 /* Frog.jpeg */,
 				2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */,
 				8D15AC360486D014006FF6A4 /* PzzApp-Info.plist */,
 				089C165FFE840EACC02AAC07 /* InfoPlist.strings */,
+				1DDD58280DA1D0D100B32029 /* PZWindow.xib */,
 				1DDD582A0DA1D0D100B32029 /* PzzApp.xib */,
 				A135B7D41528A37A00921464 /* About.xib */,
 				A135B8091528AB2A00921464 /* Preferences.xib */,
@@ -216,11 +216,11 @@
 			files = (
 				8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */,
 				8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */,
+				1DDD582C0DA1D0D100B32029 /* PZWindow.xib in Resources */,
 				1DDD582D0DA1D0D100B32029 /* PzzApp.xib in Resources */,
 				A135B7D51528A37A00921464 /* About.xib in Resources */,
 				A135B80A1528AB2A00921464 /* Preferences.xib in Resources */,
 				A135B8F11528CE2600921464 /* Frog.jpeg in Resources */,
-				A135BA421529EDAB00921464 /* PZWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,8 +237,8 @@
 				A135B7E51528A79F00921464 /* PZApplicationDelegate.m in Sources */,
 				A135B80E1528AB8200921464 /* PZPreferencesWindowController.m in Sources */,
 				A135B8A71528C46A00921464 /* PZModel.m in Sources */,
-				A135BA271529ECD800921464 /* PZWindowController.m in Sources */,
-				A108E9F7152A1F9E00EC7774 /* NSUserDefaultsWithExtras.m in Sources */,
+				A135B8F41528CE8700921464 /* PZWindowController.m in Sources */,
+				49C516CA152A2B0C002066E7 /* NSUserDefaultsWithExtras.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,6 +251,14 @@
 				089C1660FE840EACC02AAC07 /* English */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1DDD58280DA1D0D100B32029 /* PZWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1DDD58290DA1D0D100B32029 /* English */,
+			);
+			name = PZWindow.xib;
 			sourceTree = "<group>";
 		};
 		1DDD582A0DA1D0D100B32029 /* PzzApp.xib */ = {
@@ -267,14 +275,6 @@
 				2A37F4BAFDCFA73011CA2CEA /* English */,
 			);
 			name = Credits.rtf;
-			sourceTree = "<group>";
-		};
-		A135BA401529EDAB00921464 /* PZWindow.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A135BA411529EDAB00921464 /* English */,
-			);
-			name = PZWindow.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

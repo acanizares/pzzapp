@@ -24,6 +24,7 @@
 
 #import "PZDocument.h"
 #import "PZWindowController.h"
+#import "NSUserDefaultsWithExtras.h"
 
 @interface PZDocument()
 
@@ -34,21 +35,22 @@
 
 @implementation PZDocument
 
-- (id)init
+- (id) init
 {
     self = [super init];
     if (self && image) {
-        // FIXME! Tomar los valores de los domains      
+      NSUserDefaults *defaults = [[NSUserDefaultsController 
+                                   sharedUserDefaultsController] defaults];
+
       puzzDefaults = [[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                    [self undoManager],          @"UndoManager",
-                    [NSNumber numberWithInt:25], @"Level", 
-                    [NSNumber numberWithInt:2],  @"Rows",  /* WARNING! minimum2*/
-                    [NSNumber numberWithInt:2],  @"Columns",
-                    [NSNumber numberWithInt:0],  @"EmptyX",
-                    [NSNumber numberWithInt:0],  @"EmptyY",
-                    image,                       @"Image",
-                    nil] 
-                  retain];
+          [defaults objectForKey:@"Level"],          @"Level", 
+          [defaults objectForKey:@"Rows"],           @"Rows",
+          [defaults objectForKey:@"Columns"],        @"Columns",
+          [defaults objectForKey:@"EmptyX"],         @"EmptyX",
+          [defaults objectForKey:@"EmptyY"],         @"EmptyY",
+          image,                                     @"Image",
+          [defaults colorForKey:@"BackgroundColor"], @"BackgroundColor",
+          nil] retain];
     } else {
       [self release];
       return nil;
@@ -90,7 +92,9 @@
   [self addWindowController:controller];
   [controller showWindow:self];
     // FIXME! HACK: Resize model and matrix to display the first time.
-  [controller changeSizeWithRows:4 columns:4];
+  NSUserDefaults *defaults = [[NSUserDefaultsController sharedUserDefaultsController] defaults];
+  [controller changeSizeWithRows:[defaults integerForKey:@"Rows"]
+                         columns:[defaults integerForKey:@"Columns"]];
 }
 
 - (BOOL) loadImageFromURL: (NSURL*) url {

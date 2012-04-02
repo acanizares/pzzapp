@@ -35,11 +35,11 @@ typedef void (^AlertBlock)(void);
 
 /*!
  */
-@interface PZWindowController : NSWindowController {
+@interface PZWindowController : NSWindowController <NSAnimationDelegate> {
 	PZModel                    *puzz;
 	NSMutableDictionary *puzzlePrefs;	
 	IBOutlet NSMatrix        *matrix;
-  
+  NSColor*           matrixBgColor;
 	IBOutlet NSPanel *alertSheet;
 	IBOutlet NSButton *alertSheetCheck;
 	SheetModes currSheetMode;
@@ -56,10 +56,11 @@ typedef void (^AlertBlock)(void);
 - (void) doChangeLevel: (id) sender;
     //// These two together implement "empty cell editing mode"
 - (void) doChangeEmptyCell: (id) sender;
-- (void) takeSelectedPieceOff: (id) sender;
+- (void) doTakePieceOff: (id) sender;
 
-  //// Cells in the matrix have this as an action
-- (IBAction) movePieceView: (id) sender;
+  //// The matrix has this as an action (WARNING! don't set the action of the
+  // cells or the matrix' action won't get called after a click.)
+- (void) doMovePiece: (id) sender;
 
 - (IBAction) showOrNotAgain: (id) sender;
 - (IBAction) alertSheetOK: (id) sender;
