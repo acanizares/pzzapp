@@ -9,7 +9,8 @@
 
 extern int const MAX_ROWS;
 extern int const MAX_COLS;
-
+extern NSString* PZModelUpdatedNotification;
+extern NSString* PZModelPreferencesUpdated;
 
   // Why is this an object and not a struct??!?!?!
 @interface PZPos : NSObject
@@ -58,7 +59,6 @@ extern int const MAX_COLS;
   int*                 board;
 	NSMutableArray*     pieces;
   NSImage*             image;
-    //NSUndoManager* undoManager;
   int                  level;
   PZSize*               size;
   PZPos*            emptyPos;

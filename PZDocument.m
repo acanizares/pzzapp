@@ -48,8 +48,8 @@
           [defaults objectForKey:@"Columns"],        @"Columns",
           [defaults objectForKey:@"EmptyX"],         @"EmptyX",
           [defaults objectForKey:@"EmptyY"],         @"EmptyY",
-          image,                                     @"Image",
           [defaults colorForKey:@"BackgroundColor"], @"BackgroundColor",
+          image,                                     @"Image",
           nil] retain];
     } else {
       [self release];

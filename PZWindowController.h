@@ -36,13 +36,14 @@ typedef void (^AlertBlock)(void);
 /*!
  */
 @interface PZWindowController : NSWindowController <NSAnimationDelegate> {
-	PZModel                    *puzz;
-	NSMutableDictionary *puzzlePrefs;	
-	IBOutlet NSMatrix        *matrix;
+	PZModel*                    puzz;
+	NSMutableDictionary* puzzlePrefs;	
+	IBOutlet NSMatrix*        matrix;
   NSColor*           matrixBgColor;
-	IBOutlet NSPanel *alertSheet;
-	IBOutlet NSButton *alertSheetCheck;
-	SheetModes currSheetMode;
+  
+	IBOutlet NSPanel*       alertSheet;
+	IBOutlet NSButton* alertSheetCheck;
+	SheetModes           currSheetMode;
 }
 
   //- (IBAction) changeImage: (id) sender;
