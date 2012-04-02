@@ -21,6 +21,8 @@
 	NSData *transpColorData=[NSArchiver archivedDataWithRootObject:transpColor];
 	
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	
+	//Values admitted: NSData, NSString, NSNumber, NSDate, NSArray, or NSDictionary
 	NSDictionary *appDefaults = [NSDictionary 
 															 dictionaryWithObjectsAndKeys: 
 															 @"YES", @"ShowRestartSheet",

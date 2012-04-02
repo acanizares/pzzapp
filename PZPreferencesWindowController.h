@@ -26,11 +26,12 @@
 	IBOutlet NSPopUpButton *generalLevelPopUp;
 	IBOutlet NSPopUpButton *generalSizePopUp;
 	IBOutlet NSColorWell *generalColorWell;
+	IBOutlet NSButton *showAlertCheckBox;
 	int currentViewTag;	
 }
 
 + (PZPreferencesWindowController *) sharedPZPreferencesWindowController;
-+ (NSString *) nibName;
+
 -(NSView *) viewForTag:(int)tag;
 -(IBAction) switchView:(id)sender;
 -(NSRect) newFrameForNewContentView:(NSView *)view;

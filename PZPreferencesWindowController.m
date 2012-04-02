@@ -12,23 +12,39 @@
 
 static PZPreferencesWindowController *_sharedPZPreferencesWindowController = nil;
 
+@interface PZPreferencesWindowController()
+
+- (void) updateGeneralView;
+
+@end
+
+
+
 @implementation PZPreferencesWindowController
 
+- (id) init
+{
+	self = [super initWithWindowNibName:@"Preferences"];
+	if (self) {
+		[[NSNotificationCenter defaultCenter] addObserver: self 
+																						 selector: @selector(updateGeneralView)
+																								 name: NSUserDefaultsDidChangeNotification
+																							 object: nil];
+	} else {
+		[self release];
+		return nil;
+	}
+	
+	return self;
+}
 
 + (PZPreferencesWindowController *) sharedPZPreferencesWindowController
 {
 	if (!_sharedPZPreferencesWindowController) {
-		_sharedPZPreferencesWindowController = [[self alloc] initWithWindowNibName:[self nibName]];
+		_sharedPZPreferencesWindowController = [[self alloc] init];
 	}
 	return _sharedPZPreferencesWindowController;
 }
-
-
-+ (NSString *)nibName
-{
-	return @"Preferences";
-}
-
 
 - (void) dealloc {
 	[super dealloc];
@@ -45,24 +61,7 @@ static PZPreferencesWindowController *_sharedPZPreferencesWindowController = nil
 	[[self.window contentView] addSubview:generalPreferenceView];
 	[bar setSelectedItemIdentifier:@"General"];
 	[self.window center];
-	
-	NSUserDefaults *defaults = [[NSUserDefaultsController sharedUserDefaultsController] 
-															defaults];
-	NSString *defImageURL = [[defaults persistentDomainForName:@"com.pilpelsoft.PzzApp"] 
-													 objectForKey:@"ImageURL"];
-	if (defImageURL) {
-		  //show image in viewer if there is one in our persistent domain
-		NSImage *defImage = [[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:defImageURL]];
-		[generalImageView setImage:defImage];
-		[generalImageViewLabel setAlphaValue:0.0];
-		[defImage release];
-	}
-	[generalLevelPopUp selectItemWithTag:[defaults integerForKey:@"Level"]];
-	if ([defaults integerForKey:@"Rows"] == [defaults integerForKey:@"Columns"])
-		[generalSizePopUp selectItemWithTag:[defaults integerForKey:@"Rows"]];
-	else
-		NSLog(@"Error: different values for keys Rows and Columns.");
-	[generalColorWell setColor:[defaults colorForKey:@"BackgroundColor"]];
+	[self updateGeneralView];
 }
 
 -(NSView *)viewForTag:(int)tag {
@@ -108,6 +107,39 @@ static PZPreferencesWindowController *_sharedPZPreferencesWindowController = nil
 	
 }
 
+- (void) updateGeneralView {
+	NSUserDefaults *defaults = [[NSUserDefaultsController sharedUserDefaultsController] 
+															defaults];
+	NSString *defImageURL = [[defaults persistentDomainForName:@"com.pilpelsoft.PzzApp"] 
+													 objectForKey:@"ImageURL"];
+	if (defImageURL) {
+		//show image in viewer if there is one in our persistent domain
+		NSImage *defImage = [[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:defImageURL]];
+		[generalImageView setImage:defImage];
+		[generalImageViewLabel setAlphaValue:0.0];
+		[defImage release];
+	}
+	else {
+		[generalImageView setImage:nil];
+		[generalImageViewLabel setAlphaValue:1.0];
+	}
+	[generalLevelPopUp selectItemWithTag:[defaults integerForKey:@"Level"]];
+	if ([defaults integerForKey:@"Rows"] == [defaults integerForKey:@"Columns"])
+		[generalSizePopUp selectItemWithTag:[defaults integerForKey:@"Rows"]];
+	else
+		NSLog(@"Error: different values for keys Rows and Columns.");
+	[generalColorWell setColor:[defaults colorForKey:@"BackgroundColor"]];
+	if ([defaults boolForKey:@"ShowRestartSheet"] && 
+			[defaults boolForKey:@"ShowShuffleSheet"] &&
+			[defaults boolForKey:@"ShowChangeLevelSheet"] && 
+			[defaults boolForKey:@"ShowChangeSizeSheet"] &&
+			[defaults boolForKey:@"ShowChooseEmptyBlockSheet"] && 
+			[defaults boolForKey:@"ShowChooseImageSheet"])
+		[showAlertCheckBox setState:NSOnState];
+	else
+		[showAlertCheckBox setState:NSOffState];
+}
+
 -(IBAction) chooseImage: (id) sender {
 	NSOpenPanel* oPanel = [NSOpenPanel openPanel];
 	
@@ -150,6 +182,19 @@ static PZPreferencesWindowController *_sharedPZPreferencesWindowController = nil
 }
 
 - (IBAction) configureAlertDialogs: (id) sender {
+	BOOL newValue = ([sender state] != 0);
+	[[[NSUserDefaultsController sharedUserDefaultsController] defaults] 
+	 setBool: newValue forKey:@"ShowRestartSheet"];
+	[[[NSUserDefaultsController sharedUserDefaultsController] defaults] 
+	 setBool: newValue forKey:@"ShowShuffleSheet"];
+	[[[NSUserDefaultsController sharedUserDefaultsController] defaults] 
+	 setBool: newValue forKey:@"ShowChangeLevelSheet"];
+	[[[NSUserDefaultsController sharedUserDefaultsController] defaults] 
+	 setBool: newValue forKey:@"ShowChangeSizeSheet"];
+	[[[NSUserDefaultsController sharedUserDefaultsController] defaults] 
+	 setBool: newValue forKey:@"ShowChooseEmptyBlockSheet"];
+	[[[NSUserDefaultsController sharedUserDefaultsController] defaults] 
+	 setBool: newValue forKey:@"ShowChooseImageSheet"];
 }
 
 - (IBAction) restorePreferences: (id) sender {
