@@ -11,9 +11,9 @@
 			<string key="NS.object.0">851</string>
 		</object>
 		<array class="NSMutableArray" key="IBDocument.EditedObjectIDs">
+			<integer value="15"/>
 			<integer value="16"/>
 			<integer value="1"/>
-			<integer value="15"/>
 		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1187,14 +1187,6 @@
 					<object class="IBActionConnection" key="connection">
 						<string key="label">doChangeLevel:</string>
 						<reference key="source" ref="1003"/>
-						<reference key="destination" ref="101816247"/>
-					</object>
-					<int key="connectionID">107</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">doChangeLevel:</string>
-						<reference key="source" ref="1003"/>
 						<reference key="destination" ref="917384855"/>
 					</object>
 					<int key="connectionID">108</int>
@@ -1358,6 +1350,22 @@
 						<reference key="destination" ref="711144328"/>
 					</object>
 					<int key="connectionID">133</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">doChangeLevel:</string>
+						<reference key="source" ref="1003"/>
+						<reference key="destination" ref="101816247"/>
+					</object>
+					<int key="connectionID">134</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">doChangeBackgroundColor:</string>
+						<reference key="source" ref="1003"/>
+						<reference key="destination" ref="157432931"/>
+					</object>
+					<int key="connectionID">135</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1972,9 +1980,9 @@
 				<string key="12.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="12.designableToolbarItemIdentifier">Current Puzzle</string>
 				<boolean value="YES" key="12.toolbarItem.selectable"/>
-				<string key="15.IBEditorWindowLastContentRect">{{433, 334}, {457, 295}}</string>
+				<string key="15.IBEditorWindowLastContentRect">{{431, 257}, {457, 295}}</string>
 				<string key="15.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="16.IBEditorWindowLastContentRect">{{463, 653}, {403, 215}}</string>
+				<string key="16.IBEditorWindowLastContentRect">{{454, 597}, {403, 215}}</string>
 				<string key="16.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="17.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<object class="NSAffineTransform" key="17.IBViewBoundsToFrameTransform">
@@ -2110,7 +2118,7 @@
 				<string key="71.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="72.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="73.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="74.IBEditorWindowLastContentRect">{{590, 701}, {134, 83}}</string>
+				<string key="74.IBEditorWindowLastContentRect">{{587, 685}, {134, 83}}</string>
 				<string key="74.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="75.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="76.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2120,7 +2128,7 @@
 				<string key="8.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="80.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="81.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="82.IBEditorWindowLastContentRect">{{590, 727}, {147, 83}}</string>
+				<string key="82.IBEditorWindowLastContentRect">{{587, 711}, {147, 83}}</string>
 				<string key="82.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="83.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="84.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2132,7 +2140,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">133</int>
+			<int key="maxID">135</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2254,14 +2262,15 @@
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="alertSheetCancel:">id</string>
 						<string key="alertSheetOK:">id</string>
+						<string key="doChangeBackgroundColor:">id</string>
 						<string key="doChangeEmptyCell:">id</string>
 						<string key="doChangeLevel:">id</string>
 						<string key="doChangeSize:">id</string>
+						<string key="doMovePiece:">id</string>
 						<string key="doRestart:">id</string>
 						<string key="doShuffle:">id</string>
-						<string key="movePieceView:">id</string>
+						<string key="doTakePieceOff:">id</string>
 						<string key="showOrNotAgain:">id</string>
-						<string key="takeSelectedPieceOff:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="alertSheetCancel:">
@@ -2270,6 +2279,10 @@
 						</object>
 						<object class="IBActionInfo" key="alertSheetOK:">
 							<string key="name">alertSheetOK:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="doChangeBackgroundColor:">
+							<string key="name">doChangeBackgroundColor:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="doChangeEmptyCell:">
@@ -2284,6 +2297,10 @@
 							<string key="name">doChangeSize:</string>
 							<string key="candidateClassName">id</string>
 						</object>
+						<object class="IBActionInfo" key="doMovePiece:">
+							<string key="name">doMovePiece:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBActionInfo" key="doRestart:">
 							<string key="name">doRestart:</string>
 							<string key="candidateClassName">id</string>
@@ -2292,16 +2309,12 @@
 							<string key="name">doShuffle:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="movePieceView:">
-							<string key="name">movePieceView:</string>
+						<object class="IBActionInfo" key="doTakePieceOff:">
+							<string key="name">doTakePieceOff:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="showOrNotAgain:">
 							<string key="name">showOrNotAgain:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="takeSelectedPieceOff:">
-							<string key="name">takeSelectedPieceOff:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</dictionary>

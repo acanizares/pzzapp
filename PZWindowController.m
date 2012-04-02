@@ -8,6 +8,7 @@
 
 #import "PZWindowController.h"
 
+
 @implementation PZButtonCell
 
 @synthesize imageAlpha;
@@ -328,6 +329,12 @@
 	} else {
     codeAfterOKButton();
   }
+}
+
+- (void) doChangeBackgroundColor: (id) sender
+{
+	matrixBgColor = [sender color];
+	[matrix setBackgroundColor:matrixBgColor];
 }
 
 - (void) doTakePieceOff: (id) sender

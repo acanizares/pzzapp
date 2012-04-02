@@ -58,6 +58,8 @@ typedef void (^AlertBlock)(void);
 - (void) doChangeEmptyCell: (id) sender;
 - (void) doTakePieceOff: (id) sender;
 
+- (void) doChangeBackgroundColor: (id) sender;
+
   //// The matrix has this as an action (WARNING! don't set the action of the
   // cells or the matrix' action won't get called after a click.)
 - (void) doMovePiece: (id) sender;
