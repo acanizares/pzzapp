@@ -10,6 +10,8 @@
 #import "PZModel.h"
 
 
+extern NSString* PZWindowPreferencesUpdated;
+
 typedef enum {
 	none, restartSheet, shuffleSheet,
 	changeLevelSheet, changeSizeSheet,

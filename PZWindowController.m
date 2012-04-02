@@ -8,6 +8,7 @@
 
 #import "PZWindowController.h"
 
+NSString* PZWindowPreferencesUpdated  = @"PZWindowPreferencesUpdated"; 
 
 @implementation PZButtonCell
 
@@ -336,6 +337,13 @@
 {
 	matrixBgColor = [sender color];
 	[matrix setBackgroundColor:matrixBgColor];
+	// TODO: send notification
+	NSMutableDictionary *dict = [NSMutableDictionary 
+															 dictionaryWithObject:[matrix backgroundColor] forKey:@"BackgroundColor"];
+	[[NSNotificationCenter defaultCenter] 
+	 postNotificationName:PZWindowPreferencesUpdated
+	 object:self
+	 userInfo:dict];
 }
 
 - (void) doTakePieceOff: (id) sender

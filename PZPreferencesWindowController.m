@@ -15,6 +15,7 @@ static PZPreferencesWindowController *_sharedPZPreferencesWindowController = nil
 @interface PZPreferencesWindowController()
 
 - (void) updateGeneralView;
+- (void) updateCurrentPuzzleView;
 
 @end
 
@@ -30,6 +31,7 @@ static PZPreferencesWindowController *_sharedPZPreferencesWindowController = nil
 																						 selector: @selector(updateGeneralView)
 																								 name: NSUserDefaultsDidChangeNotification
 																							 object: nil];
+		// TODO: apuntarse a PZWindowPreferencesUpdated
 	} else {
 		[self release];
 		return nil;
@@ -138,6 +140,10 @@ static PZPreferencesWindowController *_sharedPZPreferencesWindowController = nil
 		[showAlertCheckBox setState:NSOnState];
 	else
 		[showAlertCheckBox setState:NSOffState];
+}
+
+- (void) updateCurrentPuzzleView {
+ // TODO: responder a PZWindowPreferencesUpdated
 }
 
 -(IBAction) chooseImage: (id) sender {
