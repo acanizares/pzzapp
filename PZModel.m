@@ -7,8 +7,20 @@
 
 #import "PZModel.h"
 
+
+/******************************************************************************
+ * Extern constants
+ ******************************************************************************/
+
 int const MAX_ROWS = 100;
 int const MAX_COLS = 100;
+NSString* PZModelUpdatedNotification = @"PZModelUpdatedNotification";
+NSString* PZModelPreferencesUpdated  = @"PZModelPreferencesUpdated"; 
+
+
+/******************************************************************************
+ * Rather pointless position and size objects
+ ******************************************************************************/
 
 @implementation PZPos
 
@@ -84,7 +96,8 @@ int const MAX_COLS = 100;
 }
 
 // Autoreleased
-+ (PZSize*) sizeWithRows: (NSInteger) r columns: (NSInteger) c {
++ (PZSize*) sizeWithRows: (NSInteger) r columns: (NSInteger) c
+{
 	PZSize *aux = [PZSize alloc];
   [aux initWithRows:r columns:c];
 	[aux autorelease];
@@ -242,7 +255,6 @@ int const MAX_COLS = 100;
 }
 
 - (void) shuffle {
-  self.shuffling = YES;  // Used for undo operations (not used here yet)
  	[self reset];
 
 	PZPos* aux = [PZPos posWithX:emptyPos.x Y:emptyPos.y];
@@ -257,7 +269,6 @@ int const MAX_COLS = 100;
     
 		[self move:aux]; // try to move
 	} 
-  self.shuffling = NO;
 }
 
 /*! Moves the given piece into the empty position if it can be done.
@@ -280,16 +291,9 @@ int const MAX_COLS = 100;
   [piece valuesFrom:oldEmpty];
 
   	// Using asynchronous posting seems overkill?
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"PZModelUpdated"
-																											object:self];
-/*
-  if (! shuffling) {
-    [undoManager registerUndoWithTarget:self 
-                               selector:@selector(move:)
-                                 object:[emptyPos copy]];
-    [undoManager setActionName:@"move"];
-  }
- */
+	[[NSNotificationCenter defaultCenter] 
+          postNotificationName:PZModelUpdatedNotification
+                        object:self];
   return YES;
 }
 
@@ -311,49 +315,62 @@ int const MAX_COLS = 100;
  */
 - (BOOL) setPrefs: (NSDictionary*) dict {
 
-  /*
-  NSUndoManager* newUndo = (NSUndoManager*)[dict objectForKey:@"UndoManager"];
-  if (! [undoManager isEqual:newUndo])
-    undoManager = [newUndo retain];
-	*/
-	////// Read new image, compare with old, resplit if necessary
+  BOOL changes = NO;
+
   NSImage* newImage = (NSImage*)[dict objectForKey:@"Image"];
-  if (! [newImage isEqual:image]) {
-    if (! [newImage isValid])
-      return NO;
-		[image autorelease];
-		image = [newImage retain];
-		[self splitImage];
-  }
-	////// Read new size, compare with old, resize if necessary.
+  if (! [newImage isValid])
+    return NO;
+
 	PZSize* ts = [PZSize sizeWithRows:[(NSNumber*)[dict objectForKey:@"Rows"] intValue] 
                             columns:[(NSNumber*)[dict objectForKey:@"Columns"] intValue]];
   if (ts.rows < 1 || ts.columns < 1 || ts.rows > MAX_ROWS || ts.columns > MAX_COLS)
     return NO;
 
-	if (! [size isEqual:ts]) {
-		[size valuesFrom:ts];
-		[self resize];  // WARNING! This needs a loaded image!
-	}
-	
-	////// Read new emptyPos, copy if it's valid.
 	PZPos* tp = [PZPos posWithX:[(NSNumber*)[dict objectForKey:@"EmptyX"] intValue]
                             Y:[(NSNumber*)[dict objectForKey:@"EmptyY"] intValue]];
-	
-  if (! [self isValidPos: tp])
+	if (! [self isValidPos:tp])
     return NO;
-	[emptyPos valuesFrom: tp];
-	
-	////// Read new level, copy if it's valid.
+
   int tl = [(NSNumber*)[dict objectForKey:@"Level"] intValue];
   if (! [self isValidLevel: tl])
     return NO;
-  level = tl;
+  
+  if (! [newImage isEqual:image]) {
+		[image autorelease];
+		image = [newImage retain];
+		[self splitImage];
+    changes = YES;
+  }
+  
+  if (! [size isEqual:ts]) {
+		[size valuesFrom:ts];
+		[self resize];  // WARNING! This needs a loaded image!
+    changes = YES;
+	}
 	
+  if (! [self isValidPos: tp]) {
+    return NO;
+  } else if (! [emptyPos isEqual:tp]) {
+    [emptyPos valuesFrom: tp];
+    changes = YES;
+  }
+	
+  if (level != tl) {
+    level   = tl;
+    changes = YES;
+  }
+  
+  if (changes) {
+    [[NSNotificationCenter defaultCenter] 
+     postNotificationName:PZModelPreferencesUpdated
+     object:self
+     userInfo:dict];    
+  }
 	return YES; 
 }
 
-- (NSDictionary*) getPrefs {
+- (NSDictionary*) getPrefs
+{
   NSDictionary* dict = [[NSDictionary alloc] init];
   [dict autorelease];
   /*

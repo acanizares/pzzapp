@@ -81,7 +81,7 @@
 							</object>
 							<string key="NSCellSize">{100, 100}</string>
 							<string key="NSIntercellSpacing">{1, 1}</string>
-							<int key="NSMatrixFlags">-1868029952</int>
+							<int key="NSMatrixFlags">-1851252736</int>
 							<string key="NSCellClass">NSActionCell</string>
 							<object class="NSButtonCell" key="NSProtoCell" id="321095084">
 								<int key="NSCellFlags">67239424</int>
@@ -647,8 +647,8 @@
 							<string>doMovePiece:</string>
 							<string>doRestart:</string>
 							<string>doShuffle:</string>
+							<string>doTakePieceOff:</string>
 							<string>showOrNotAgain:</string>
-							<string>takeSelectedPieceOff:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -676,8 +676,8 @@
 							<string>doMovePiece:</string>
 							<string>doRestart:</string>
 							<string>doShuffle:</string>
+							<string>doTakePieceOff:</string>
 							<string>showOrNotAgain:</string>
-							<string>takeSelectedPieceOff:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -714,11 +714,11 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
-								<string key="name">showOrNotAgain:</string>
+								<string key="name">doTakePieceOff:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
-								<string key="name">takeSelectedPieceOff:</string>
+								<string key="name">showOrNotAgain:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 						</object>
