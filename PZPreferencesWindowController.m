@@ -7,6 +7,7 @@
 //
 
 #import "PZPreferencesWindowController.h"
+#import "NSUserDefaultsWithExtras.h"
 
 
 static PZPreferencesWindowController *_sharedPZPreferencesWindowController = nil;
@@ -61,6 +62,7 @@ static PZPreferencesWindowController *_sharedPZPreferencesWindowController = nil
 		[generalSizePopUp selectItemWithTag:[defaults integerForKey:@"Rows"]];
 	else
 		NSLog(@"Error: different values for keys Rows and Columns.");
+	[generalColorWell setColor:[defaults colorForKey:@"BackgroundColor"]];
 }
 
 -(NSView *)viewForTag:(int)tag {
@@ -143,7 +145,10 @@ static PZPreferencesWindowController *_sharedPZPreferencesWindowController = nil
 }
 
 - (IBAction) changeBackgroundColor: (id) sender {
+  [[[NSUserDefaultsController sharedUserDefaultsController] defaults] 
+   setColor: [sender color] forKey:@"BackgroundColor"];
 }
+
 - (IBAction) configureAlertDialogs: (id) sender {
 }
 

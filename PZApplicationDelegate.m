@@ -16,6 +16,10 @@
 + (void)initialize {
 	NSString *imagePath = [[[NSBundle mainBundle] URLForResource:@"Frog" 
 																								 withExtension:@"jpeg"] absoluteString];
+	[NSColor setIgnoresAlpha:NO];
+	NSColor *transpColor= [NSColor colorWithCalibratedWhite:0.0 alpha:0.0];
+	NSData *transpColorData=[NSArchiver archivedDataWithRootObject:transpColor];
+	
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	NSDictionary *appDefaults = [NSDictionary 
 															 dictionaryWithObjectsAndKeys: 
@@ -31,6 +35,7 @@
 															 [NSNumber numberWithInt:0], @"EmptyX",
 															 [NSNumber numberWithInt:0], @"EmptyY",
 															 imagePath, @"ImageURL",
+															 transpColorData, @"BackgroundColor",
 															 nil];
 	[defaults registerDefaults:appDefaults];
 	[[NSUserDefaultsController sharedUserDefaultsController] 

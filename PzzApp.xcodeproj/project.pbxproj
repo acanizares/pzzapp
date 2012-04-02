@@ -119,6 +119,8 @@
 				A135B80D1528AB8200921464 /* PZPreferencesWindowController.m */,
 				A135B8F21528CE8700921464 /* PZWindowController.h */,
 				A135B8F31528CE8700921464 /* PZWindowController.m */,
+				A108E9F5152A1F9E00EC7774 /* NSUserDefaultsWithExtras.h */,
+				A108E9F6152A1F9E00EC7774 /* NSUserDefaultsWithExtras.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -233,6 +235,7 @@
 				A135B80E1528AB8200921464 /* PZPreferencesWindowController.m in Sources */,
 				A135B8A71528C46A00921464 /* PZModel.m in Sources */,
 				A135B8F41528CE8700921464 /* PZWindowController.m in Sources */,
+				A108E9F7152A1F9E00EC7774 /* NSUserDefaultsWithExtras.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

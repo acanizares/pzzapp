@@ -12,8 +12,8 @@
 		</object>
 		<array class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<integer value="16"/>
-			<integer value="15"/>
 			<integer value="1"/>
+			<integer value="15"/>
 		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1335,6 +1335,22 @@
 					</object>
 					<int key="connectionID">130</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">changeBackgroundColor:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="670077620"/>
+					</object>
+					<int key="connectionID">131</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">generalColorWell</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="670077620"/>
+					</object>
+					<int key="connectionID">132</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -2108,7 +2124,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">130</int>
+			<int key="maxID">132</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2176,6 +2192,7 @@
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="bar">NSToolbar</string>
 						<string key="currentPuzzlePreferenceView">NSView</string>
+						<string key="generalColorWell">NSColorWell</string>
 						<string key="generalImageView">PZDropImageView</string>
 						<string key="generalImageViewLabel">NSTextField</string>
 						<string key="generalLevelPopUp">NSPopUpButton</string>
@@ -2190,6 +2207,10 @@
 						<object class="IBToOneOutletInfo" key="currentPuzzlePreferenceView">
 							<string key="name">currentPuzzlePreferenceView</string>
 							<string key="candidateClassName">NSView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="generalColorWell">
+							<string key="name">generalColorWell</string>
+							<string key="candidateClassName">NSColorWell</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="generalImageView">
 							<string key="name">generalImageView</string>
@@ -2274,8 +2295,6 @@
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="alertSheet">NSPanel</string>
 						<string key="alertSheetCheck">NSButton</string>
-						<string key="currLevelItem">NSMenuItem</string>
-						<string key="currSizeItem">NSMenuItem</string>
 						<string key="matrix">NSMatrix</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -2286,14 +2305,6 @@
 						<object class="IBToOneOutletInfo" key="alertSheetCheck">
 							<string key="name">alertSheetCheck</string>
 							<string key="candidateClassName">NSButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="currLevelItem">
-							<string key="name">currLevelItem</string>
-							<string key="candidateClassName">NSMenuItem</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="currSizeItem">
-							<string key="name">currSizeItem</string>
-							<string key="candidateClassName">NSMenuItem</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="matrix">
 							<string key="name">matrix</string>
