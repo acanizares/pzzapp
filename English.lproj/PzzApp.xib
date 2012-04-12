@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="543"/>
+			<integer value="81"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1804,6 +1804,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>alertSheetCancel:</string>
 							<string>alertSheetOK:</string>
+							<string>doChangeBackgroundColor:</string>
 							<string>doChangeEmptyCell:</string>
 							<string>doChangeLevel:</string>
 							<string>doChangeSize:</string>
@@ -1815,6 +1816,7 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -1833,6 +1835,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>alertSheetCancel:</string>
 							<string>alertSheetOK:</string>
+							<string>doChangeBackgroundColor:</string>
 							<string>doChangeEmptyCell:</string>
 							<string>doChangeLevel:</string>
 							<string>doChangeSize:</string>
@@ -1850,6 +1853,10 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">alertSheetOK:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">doChangeBackgroundColor:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">

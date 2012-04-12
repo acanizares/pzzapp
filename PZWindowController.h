@@ -48,7 +48,7 @@ typedef void (^AlertBlock)(void);
 	SheetModes           currSheetMode;
 }
 
-  //- (IBAction) changeImage: (id) sender;
+ //- (IBAction) changeImage: (id) sender;
 - (BOOL) changeImage: (NSImage*) newImage;  // still necessary?
 
  //// UI actions fired through the responder chain

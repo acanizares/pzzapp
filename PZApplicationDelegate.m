@@ -22,7 +22,8 @@
 	
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	
-	//Values admitted: NSData, NSString, NSNumber, NSDate, NSArray, or NSDictionary
+	//Definition of the volatile default values stored in the registration domain
+	//Admitted values: NSData, NSString, NSNumber, NSDate, NSArray, or NSDictionary
 	NSDictionary *appDefaults = [NSDictionary 
 															 dictionaryWithObjectsAndKeys: 
 															 @"YES", @"ShowRestartSheet",

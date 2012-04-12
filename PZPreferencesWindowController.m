@@ -228,10 +228,7 @@ static PZPreferencesWindowController *_sharedPZPreferencesWindowController = nil
  ******************************************************************************/
 //
 //  Created by Vladimir Boychentsov on 2/26/10.
-//  Copyright 2010 www.injoit.com. All rights reserved.
-//
-
-
+//  Copyright 2010 www.injoit.com. All rights 
 
 @implementation PZDropImageView
 
@@ -244,6 +241,59 @@ static PZPreferencesWindowController *_sharedPZPreferencesWindowController = nil
 			[(PZPreferencesWindowController*)del imageRemoved];
 	}
 	[super keyDown:theEvent];
+} 
+
+ //Handling mouse-dragging in a mouse-tracking loop (con nubecita)
+- (void) mouseDown:(NSEvent *)theEvent {
+	if (![self image]) return;
+	BOOL keepOn = YES;
+	BOOL isInside = YES;
+	
+	NSPoint mouseLoc;
+	NSCursor *cursor;
+	
+	while (keepOn) {
+		theEvent = [[self window] nextEventMatchingMask: NSLeftMouseUpMask |
+                NSLeftMouseDraggedMask];
+		mouseLoc = [self convertPoint:[theEvent locationInWindow] fromView:nil];
+		isInside = [self mouse:mouseLoc inRect:[self bounds]];
+		
+		switch ([theEvent type]) {
+			case NSLeftMouseDragged:
+				if (!isInside) {
+					cursor = [NSCursor disappearingItemCursor];
+					[cursor set];
+				}
+				else {
+					cursor = [NSCursor arrowCursor];
+					[cursor set];
+				}
+				break;
+			case NSLeftMouseUp:
+				if (!isInside) {
+					NSShowAnimationEffect(
+																NSAnimationEffectPoof, 
+																[NSEvent mouseLocation], 
+																NSZeroSize, 
+																nil, 
+																nil, 
+																nil);
+					id <NSWindowDelegate> del = [[self window] delegate];
+					if ([(PZPreferencesWindowController*)del 
+									 respondsToSelector:@selector(imageRemoved)])
+					[(PZPreferencesWindowController*)del imageRemoved];
+				}
+				keepOn = NO;
+				break;
+			default:
+				/* Ignore any other kind of event. */
+				break;
+		}
+		
+	};
+	cursor = [NSCursor arrowCursor];
+	[cursor set];
+	return;
 }
 
 - (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender

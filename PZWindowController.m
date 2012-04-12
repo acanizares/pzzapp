@@ -80,7 +80,7 @@ NSString* PZWindowPreferencesUpdated  = @"PZWindowPreferencesUpdated";
 
 @implementation PZWindowController
 
-  /// FIXME. This is WRONG, crashes if puzz initWithPrefs: returns nil.
+ /// FIXME. This is WRONG, crashes if puzz initWithPrefs: returns nil.
 - (id) initWithPrefs: (NSMutableDictionary*) prefs
 {
   currSheetMode = none;	
@@ -333,6 +333,7 @@ NSString* PZWindowPreferencesUpdated  = @"PZWindowPreferencesUpdated";
   }
 }
 
+// This method does never get called.
 - (void) doChangeBackgroundColor: (id) sender
 {
 	matrixBgColor = [sender color];
