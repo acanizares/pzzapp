@@ -1,6 +1,6 @@
 # README #
 
-PzzApp is a simple [15-puzzle game](http://en.wikipedia.org/wiki/15_puzzle) written in Cocoa as our first (and only) program in this language. It is far from being finished but usable. It's also quite pointless in itself.
+PzzApp is a simple [15-puzzle game](http://en.wikipedia.org/wiki/15_puzzle) written in Cocoa in a 2 day hackathon as our first (and only) program in this language. It is far from being finished but usable. It's also quite pointless in itself.
 
 ### Setup ###
 
@@ -8,4 +8,4 @@ You'll need a working installation of XCode and MacOSX >= 10.6. Open the project
 
 ### Contact ###
 
-Use at your own risk. Your computer may freeze due to boredom.
+Use at your own risk. Your computer may freeze due to boredom. If it does you can drop me a line at m DOT debenito DOT d AT gmail DOT com.
