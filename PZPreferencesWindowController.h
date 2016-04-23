@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface PZDropImageView : NSImageView 
+@interface PZDropImageView : NSImageView
 
 - (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender;
 - (void)draggingExited:(id <NSDraggingInfo>)sender;
@@ -17,17 +17,17 @@
 @end
 
 @interface PZPreferencesWindowController : NSWindowController <NSToolbarDelegate> {
-	
-	IBOutlet NSToolbar *bar;
-	IBOutlet NSView *generalPreferenceView;
-	IBOutlet NSView *currentPuzzlePreferenceView;
-	IBOutlet PZDropImageView *generalImageView;
-	IBOutlet NSTextField *generalImageViewLabel;
-	IBOutlet NSPopUpButton *generalLevelPopUp;
-	IBOutlet NSPopUpButton *generalSizePopUp;
-	IBOutlet NSColorWell *generalColorWell;
-	IBOutlet NSButton *showAlertCheckBox;
-	int currentViewTag;	
+    
+    IBOutlet NSToolbar *bar;
+    IBOutlet NSView *generalPreferenceView;
+    IBOutlet NSView *currentPuzzlePreferenceView;
+    IBOutlet PZDropImageView *generalImageView;
+    IBOutlet NSTextField *generalImageViewLabel;
+    IBOutlet NSPopUpButton *generalLevelPopUp;
+    IBOutlet NSPopUpButton *generalSizePopUp;
+    IBOutlet NSColorWell *generalColorWell;
+    IBOutlet NSButton *showAlertCheckBox;
+    int currentViewTag;
 }
 
 + (PZPreferencesWindowController *) sharedPZPreferencesWindowController;

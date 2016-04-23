@@ -14,45 +14,45 @@
 @implementation PZApplicationDelegate
 
 + (void)initialize {
-	NSString *imagePath = [[[NSBundle mainBundle] URLForResource:@"Frog" 
-																								 withExtension:@"jpeg"] absoluteString];
-	[NSColor setIgnoresAlpha:NO];
-	NSColor *transpColor    = [NSColor colorWithCalibratedWhite:0.0 alpha:0.0];
-	NSData *transpColorData = [NSArchiver archivedDataWithRootObject:transpColor];
-	
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	
-	//Definition of the volatile default values stored in the registration domain
-	//Admitted values: NSData, NSString, NSNumber, NSDate, NSArray, or NSDictionary
-	NSDictionary *appDefaults = [NSDictionary 
-															 dictionaryWithObjectsAndKeys: 
-															 @"YES", @"ShowRestartSheet",
-															 @"YES", @"ShowShuffleSheet", 
-															 @"YES", @"ShowChangeLevelSheet",
-															 @"YES", @"ShowChangeSizeSheet", 
-															 @"YES", @"ShowChooseEmptyBlockSheet",
-															 @"YES", @"ShowChooseImageSheet", 
-															 [NSNumber numberWithInt:25], @"Level", 
-															 [NSNumber numberWithInt:4], @"Rows",
-															 [NSNumber numberWithInt:4], @"Columns",
-															 [NSNumber numberWithInt:0], @"EmptyX",
-															 [NSNumber numberWithInt:0], @"EmptyY",
-															 imagePath, @"ImageURL",
-															 transpColorData, @"BackgroundColor",
-															 nil];
-	[defaults registerDefaults:appDefaults];
-	[[NSUserDefaultsController sharedUserDefaultsController] 
-	 setInitialValues:appDefaults];
+    NSString *imagePath = [[[NSBundle mainBundle] URLForResource:@"Frog"
+                                                   withExtension:@"jpeg"] absoluteString];
+    [NSColor setIgnoresAlpha:NO];
+    NSColor *transpColor    = [NSColor colorWithCalibratedWhite:0.0 alpha:0.0];
+    NSData *transpColorData = [NSArchiver archivedDataWithRootObject:transpColor];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+        //Definition of the volatile default values stored in the registration domain
+        //Admitted values: NSData, NSString, NSNumber, NSDate, NSArray, or NSDictionary
+    NSDictionary *appDefaults = [NSDictionary
+                                 dictionaryWithObjectsAndKeys:
+                                 @"YES", @"ShowRestartSheet",
+                                 @"YES", @"ShowShuffleSheet",
+                                 @"YES", @"ShowChangeLevelSheet",
+                                 @"YES", @"ShowChangeSizeSheet",
+                                 @"YES", @"ShowChooseEmptyBlockSheet",
+                                 @"YES", @"ShowChooseImageSheet",
+                                 [NSNumber numberWithInt:25], @"Level",
+                                 [NSNumber numberWithInt:4], @"Rows",
+                                 [NSNumber numberWithInt:4], @"Columns",
+                                 [NSNumber numberWithInt:0], @"EmptyX",
+                                 [NSNumber numberWithInt:0], @"EmptyY",
+                                 imagePath, @"ImageURL",
+                                 transpColorData, @"BackgroundColor",
+                                 nil];
+    [defaults registerDefaults:appDefaults];
+    [[NSUserDefaultsController sharedUserDefaultsController]
+     setInitialValues:appDefaults];
 }
 
 - (IBAction) openAboutWindow: (id) sender {
-	[[PZAboutWindowController sharedPZAboutWindowController] showWindow:nil];
-	(void)sender;
+    [[PZAboutWindowController sharedPZAboutWindowController] showWindow:nil];
+    (void)sender;
 }
 
 - (IBAction) openPreferencesWindow: (id) sender {
-	[[PZPreferencesWindowController sharedPZPreferencesWindowController] showWindow:nil];
-	(void)sender;
+    [[PZPreferencesWindowController sharedPZPreferencesWindowController] showWindow:nil];
+    (void)sender;
 }
 
 @end

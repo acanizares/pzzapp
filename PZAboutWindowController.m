@@ -12,22 +12,22 @@ static PZAboutWindowController* _sharedPZAboutWindowController = nil;
 @implementation PZAboutWindowController
 
 + (PZAboutWindowController *) sharedPZAboutWindowController {
-	if (!_sharedPZAboutWindowController) {
-		_sharedPZAboutWindowController = [[self alloc] initWithWindowNibName:[self nibName]];
-	}
-	return _sharedPZAboutWindowController;
+    if (!_sharedPZAboutWindowController) {
+        _sharedPZAboutWindowController = [[self alloc] initWithWindowNibName:[self nibName]];
+    }
+    return _sharedPZAboutWindowController;
 }
 
 + (NSString *)nibName {
-	return @"About";
+    return @"About";
 }
 
 - (void) dealloc {
-	[super dealloc];
+    [super dealloc];
 }
 
 -(void)awakeFromNib {
-	[self.window center];
+    [self.window center];
 }
 
 @end

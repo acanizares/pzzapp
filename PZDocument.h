@@ -12,10 +12,10 @@
 /*!
  */
 @interface PZDocument : NSDocument {
-  NSMutableDictionary*   puzzDefaults;
-  NSURL*                 imageURL;
-  NSImage*                  image;
-  PZWindowController*  controller;
+    NSMutableDictionary*   puzzDefaults;
+    NSURL*                 imageURL;
+    NSImage*                  image;
+    PZWindowController*  controller;
 }
 
 @end

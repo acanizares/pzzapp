@@ -8,7 +8,7 @@
 #import <Cocoa/Cocoa.h>
 
 @interface PZAboutWindowController : NSWindowController {
-
+    
 }
 
 + (PZAboutWindowController *)sharedPZAboutWindowController;

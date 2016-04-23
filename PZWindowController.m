@@ -8,48 +8,48 @@
 
 #import "PZWindowController.h"
 
-NSString* PZWindowPreferencesUpdated  = @"PZWindowPreferencesUpdated"; 
+NSString* PZWindowPreferencesUpdated  = @"PZWindowPreferencesUpdated";
 
 @implementation PZButtonCell
 
 @synthesize imageAlpha;
-  // FIXME!! This constructor never gets called!!
+    // FIXME!! This constructor never gets called!!
 - (id) init
 {
-  if (! (self = [super init])) {
-    [self release];
-    return nil;
-  }
-  imageAlpha = 1.0;
-  return self;
-}
-  // FIXME!! This constructor never gets called!!
-- (id) initImageCell: (NSImage*) anImage {
-  if (self = [super initImageCell:anImage])
+    if (! (self = [super init])) {
+        [self release];
+        return nil;
+    }
     imageAlpha = 1.0;
-  else
-    [self release];
-  
-  return self;
+    return self;
+}
+    // FIXME!! This constructor never gets called!!
+- (id) initImageCell: (NSImage*) anImage {
+    if (self = [super initImageCell:anImage])
+        imageAlpha = 1.0;
+    else
+        [self release];
+    
+    return self;
 }
 
-  // FIXME!! Since the constructors don't get called, we cannot use this!
+    // FIXME!! Since the constructors don't get called, we cannot use this!
 - (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView {
-  [super drawWithFrame:cellFrame inView:controlView];
-/*
-  if ([controlView isFlipped]) {   // Careful: the view IS flipped
-      // TO-DO
-    [self.image drawInRect:cellFrame
-                  fromRect:NSZeroRect 
-                 operation:NSCompositeSourceOver //Use alpha mask
-                  fraction:imageAlpha];
-  } else {
-    [self.image drawInRect:cellFrame 
-                  fromRect:NSZeroRect 
-                 operation:NSCompositeSourceOver //Use alpha mask
-                  fraction:imageAlpha];
-  }
- */
+    [super drawWithFrame:cellFrame inView:controlView];
+    /*
+     if ([controlView isFlipped]) {   // Careful: the view IS flipped
+     // TO-DO
+     [self.image drawInRect:cellFrame
+     fromRect:NSZeroRect
+     operation:NSCompositeSourceOver //Use alpha mask
+     fraction:imageAlpha];
+     } else {
+     [self.image drawInRect:cellFrame
+     fromRect:NSZeroRect
+     operation:NSCompositeSourceOver //Use alpha mask
+     fraction:imageAlpha];
+     }
+     */
 }
 
 @end
@@ -61,7 +61,6 @@ NSString* PZWindowPreferencesUpdated  = @"PZWindowPreferencesUpdated";
 
 @interface PZWindowController()
 
-- (void) changeSizeWithRows: (int) r columns: (int) c;
 - (void) shuffle;
 - (void) restart;
 - (void) redrawAll;
@@ -80,46 +79,46 @@ NSString* PZWindowPreferencesUpdated  = @"PZWindowPreferencesUpdated";
 
 @implementation PZWindowController
 
- /// FIXME. This is WRONG, crashes if puzz initWithPrefs: returns nil.
+    /// FIXME. This is WRONG, crashes if puzz initWithPrefs: returns nil.
 - (id) initWithPrefs: (NSMutableDictionary*) prefs
 {
-  currSheetMode = none;	
-	puzzlePrefs   = [[NSMutableDictionary alloc] initWithDictionary: prefs];
-	puzz          = [[PZModel alloc] initWithPrefs:puzzlePrefs];
-  matrixBgColor = [prefs valueForKey:@"BackgroundColor"];
-
-  if (puzz == nil || ! (self = [super initWithWindowNibName:@"PZWindow"])) {
-    [self release];
-    [puzzlePrefs release];
-    [puzz release];
-    NSLog(@"PZWindowController initWithPrefs:");
-    return nil;
-  }
-  return self;
+    currSheetMode = none;
+    puzzlePrefs   = [[NSMutableDictionary alloc] initWithDictionary: prefs];
+    puzz          = [[PZModel alloc] initWithPrefs:puzzlePrefs];
+    matrixBgColor = [prefs valueForKey:@"BackgroundColor"];
+    
+    if (puzz == nil || ! (self = [super initWithWindowNibName:@"PZWindow"])) {
+        [self release];
+        [puzzlePrefs release];
+        [puzz release];
+        NSLog(@"PZWindowController initWithPrefs:");
+        return nil;
+    }
+    return self;
 }
 
 - (void) dealloc
 {
-  [puzz release];
-  [puzzlePrefs release];
-  
-  [super dealloc];
+    [puzz release];
+    [puzzlePrefs release];
+    
+    [super dealloc];
 }
 
 - (void) awakeFromNib
 {
-  // For some reason, the prototype set using IB, although apparently the
-  // same as the default cell, has different properties, so we must set it here.
-  PZButtonCell *prototype = (PZButtonCell*)[matrix cellAtRow:0 column:0];
-	[matrix setPrototype:prototype];
-  [matrix setBackgroundColor:matrixBgColor];
+    // For some reason, the prototype set using IB, although apparently the
+    // same as the default cell, has different properties, so we must set it here.
+    PZButtonCell *prototype = (PZButtonCell*)[matrix cellAtRow:0 column:0];
+    [matrix setPrototype:prototype];
+    [matrix setBackgroundColor:matrixBgColor];
 }
 
 
 /******************************************************************************
  Undo management:
  "When the first responder of an application receives an undo or redo message,
- NSResponder goes up the responder chain looking for a next responder that 
+ NSResponder goes up the responder chain looking for a next responder that
  returns an NSUndoManager object from undoManager. Any returned undo manager is
  used for the undo or redo operation.
  
@@ -130,16 +129,16 @@ NSString* PZWindowPreferencesUpdated  = @"PZWindowPreferencesUpdated";
  its views.
  
  Document-based applications often make their NSDocument objects the delegates
- of their windows and have them respond to the windowWillReturnUndoManager: 
+ of their windows and have them respond to the windowWillReturnUndoManager:
  message by returning the undo manager used for the document. These applications
- can also make each NSWindowController object the delegate of its window - the 
+ can also make each NSWindowController object the delegate of its window - the
  window controller implements windowWillReturnUndoManager: to get the undo
  manager from its document and return it."
  ******************************************************************************/
 
 - (NSUndoManager *)windowWillReturnUndoManager:(NSWindow *)window
 {
-  return [[self document] undoManager];
+    return [[self document] undoManager];
 }
 
 
@@ -148,70 +147,70 @@ NSString* PZWindowPreferencesUpdated  = @"PZWindowPreferencesUpdated";
  These four methods perform the basic operations on the model.
  ******************************************************************************/
 
-- (void) changeSizeWithRows: (int) r columns: (int) c 
+- (void) changeSizeWithRows: (int) r columns: (int) c
 {
-	if ((r == puzz.size.rows && c == puzz.size.columns) ||
-      r < 1 || c < 1 || r > MAX_ROWS || c > MAX_COLS)
-    return;
-
-	NSSize  s = [[[super window] contentView] frame].size;
-	s.width  /= c;
-	s.height /= r;
-	
-	[matrix setCellSize:s];
-	[matrix renewRows:r columns:c];
-
-	[puzzlePrefs setObject:[NSNumber numberWithInt:r] forKey:@"Rows"];
-  [puzzlePrefs setObject:[NSNumber numberWithInt:c] forKey:@"Columns"];
-	
-	[self restart];
+    if ((r == puzz.size.rows && c == puzz.size.columns) ||
+        r < 1 || c < 1 || r > MAX_ROWS || c > MAX_COLS)
+        return;
+    
+    NSSize  s = [[[super window] contentView] frame].size;
+    s.width  /= c;
+    s.height /= r;
+    
+    [matrix setCellSize:s];
+    [matrix renewRows:r columns:c];
+    
+    [puzzlePrefs setObject:[NSNumber numberWithInt:r] forKey:@"Rows"];
+    [puzzlePrefs setObject:[NSNumber numberWithInt:c] forKey:@"Columns"];
+    
+    [self restart];
 }
 
 - (void) shuffle
 {
-	[puzz setPrefs:puzzlePrefs];
-  [puzz shuffle];
-	[self redrawAll];
-	[self takeEmptyPieceOff];
+    [puzz setPrefs:puzzlePrefs];
+    [puzz shuffle];
+    [self redrawAll];
+    [self takeEmptyPieceOff];
 }
 
 - (void) restart
 {
-	[puzz setPrefs:puzzlePrefs];
-	[puzz reset];
-	[self redrawAll];
-	[self takeEmptyPieceOff];
-	[self refreshViewHack];
-  [matrix setIntercellSpacing: NSMakeSize(1.0, 1.0)];
-	[[matrix superview] setNeedsDisplay: YES];
+    [puzz setPrefs:puzzlePrefs];
+    [puzz reset];
+    [self redrawAll];
+    [self takeEmptyPieceOff];
+    [self refreshViewHack];
+    [matrix setIntercellSpacing: NSMakeSize(1.0, 1.0)];
+    [[matrix superview] setNeedsDisplay: YES];
 }
-			 
-- (BOOL) movePieceAtRow: (int) r column: (int) c 
+
+- (BOOL) movePieceAtRow: (int) r column: (int) c
 {
-	PZPos* piece  = [PZPos posWithX:c Y:r];
-	if (! [puzz move: piece])
-		return FALSE;
-
-    //// "from" was modified by [puzz move] and now contains the position 
-    //// of the shifted piece
-
-  [[[[self document]undoManager] 
-    prepareWithInvocationTarget:self] movePieceAtRow: piece.y column: piece.x];
-  [[[self document]undoManager] setActionName:@"move"];
-  
-	[[matrix cellAtRow:piece.y column:piece.x] setImage: [puzz imageAt:piece]];
-  [self takeEmptyPieceOff];
-  
-  if ([puzz isSolved])
-    [self animateSolvedPuzzle];
-
-	return TRUE;
+    PZPos* piece  = [PZPos posWithX:c Y:r];
+    if (! [puzz move: piece])
+        return FALSE;
+    
+        //// "from" was modified by [puzz move] and now contains the position
+        //// of the shifted piece
+    
+    [[[[self document]undoManager]
+      prepareWithInvocationTarget:self] movePieceAtRow: piece.y column: piece.x];
+    [[[self document]undoManager] setActionName:@"move"];
+    
+    [[matrix cellAtRow:piece.y column:piece.x] setImage: [puzz imageAt:piece]];
+    [self takeEmptyPieceOff];
+    
+    if ([puzz isSolved])
+        [self animateSolvedPuzzle];
+    
+    return TRUE;
 }
 
 - (BOOL) changeImage: (NSImage*) newImage {
-  [puzzlePrefs setObject:[newImage retain] forKey:@"Image"];
-  [self restart];
-  return YES;
+    [puzzlePrefs setObject:[newImage retain] forKey:@"Image"];
+    [self restart];
+    return YES;
 }
 
 
@@ -223,56 +222,56 @@ NSString* PZWindowPreferencesUpdated  = @"PZWindowPreferencesUpdated";
 
 - (void) redrawAll
 {
-	for (int i=0; i<puzz.size.rows; i++)
-		for (int j=0; j<puzz.size.columns; j++)
-			[[matrix cellAtRow:i column:j] setImage: [puzz imageAt:[PZPos posWithX:j Y:i]]];
+    for (int i=0; i<puzz.size.rows; i++)
+        for (int j=0; j<puzz.size.columns; j++)
+            [[matrix cellAtRow:i column:j] setImage: [puzz imageAt:[PZPos posWithX:j Y:i]]];
 }
 
 - (void) takeEmptyPieceOff
 {
-  PZButtonCell* piece = [matrix cellAtRow:puzz.emptyPos.y column:puzz.emptyPos.x];
-    // setting the image's alpha to nil (using a special PZButtonCell) would
-    // be preferable to setting it to nil if we wanted to fade the piece in
-    // after the puzzle is completed. Since this doesn't work, we fade out
-    // the whole puzzle instead and leave this as is. (FIXME)
-    //piece.imageAlpha = 0.0;
-  [piece setImage:nil];
+    PZButtonCell* piece = [matrix cellAtRow:puzz.emptyPos.y column:puzz.emptyPos.x];
+        // setting the image's alpha to nil (using a special PZButtonCell) would
+        // be preferable to setting it to nil if we wanted to fade the piece in
+        // after the puzzle is completed. Since this doesn't work, we fade out
+        // the whole puzzle instead and leave this as is. (FIXME)
+        //piece.imageAlpha = 0.0;
+    [piece setImage:nil];
 }
 
-  // Part of the NSAnimationDelegate Protocol
-  // We use this for the animation started by animateSolvedPuzzle
-  // FIXME: this doesn't get called.
+    // Part of the NSAnimationDelegate Protocol
+    // We use this for the animation started by animateSolvedPuzzle
+    // FIXME: this doesn't get called.
 - (void) animationDidEnd: (NSAnimation*) animation
 {
-  [matrix setIntercellSpacing: NSMakeSize(0.0, 0.0)];  
-  [matrix setAlphaValue: 1.0];
+    [matrix setIntercellSpacing: NSMakeSize(0.0, 0.0)];
+    [matrix setAlphaValue: 1.0];
 }
 
 - (void) animateSolvedPuzzle
 {
-
-  [NSAnimationContext beginGrouping];
+    
+    [NSAnimationContext beginGrouping];
     [[NSAnimationContext currentContext] setDuration:0.5];
-	
-    //PZButtonCell* cell = [matrix cellAtRow:puzz.emptyPos.y column:puzz.emptyPos.x];
+    
+        //PZButtonCell* cell = [matrix cellAtRow:puzz.emptyPos.y column:puzz.emptyPos.x];
     [(NSAnimation*)[matrix animator] setDelegate:self];
     [[matrix animator] setAlphaValue: 0.0];
-	[NSAnimationContext endGrouping];
-
-    // WARNING. Any code here will get executed before the animation even 
-    // starts because it runs concurrently. We need to set ourselves as
-    // delegate to the started NSAnimation.
+    [NSAnimationContext endGrouping];
+    
+        // WARNING. Any code here will get executed before the animation even
+        // starts because it runs concurrently. We need to set ourselves as
+        // delegate to the started NSAnimation.
 }
 
-  // For some misterious reason, we must resize the window in order to get the
-  // matrix to display it cells.
+    // For some misterious reason, we must resize the window in order to get the
+    // matrix to display it cells.
 - (void) refreshViewHack
 {
-	NSRect rect = [[super window] frame];
-	rect.size.width += 1.0;
-	[[super window] setFrame: rect display: YES];
-	rect.size.width -= 1.0;
-	[[super window] setFrame: rect display: YES];
+    NSRect rect = [[super window] frame];
+    rect.size.width += 1.0;
+    [[super window] setFrame: rect display: YES];
+    rect.size.width -= 1.0;
+    [[super window] setFrame: rect display: YES];
 }
 
 
@@ -285,152 +284,152 @@ NSString* PZWindowPreferencesUpdated  = @"PZWindowPreferencesUpdated";
 
 - (void) doChangeSize: (id) sender
 {
-  // The tag for the menu item calling us is n for an entry "n x n"
-  if ([sender tag] == puzz.size.rows) return;
-  
-  AlertBlock codeAfterOKButton = ^(void) {
-    [self changeSizeWithRows:[sender tag] columns:[sender tag]];
-  };
+        // The tag for the menu item calling us is n for an entry "n x n"
+    if ([sender tag] == puzz.size.rows) return;
     
-  if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ShowChangeSizeSheet"]) {
-    currSheetMode = changeSizeSheet;
-    [self openAlertSheet: codeAfterOKButton];
-  } else {
-    codeAfterOKButton();
-  }
+    AlertBlock codeAfterOKButton = ^(void) {
+        [self changeSizeWithRows:[sender tag] columns:[sender tag]];
+    };
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ShowChangeSizeSheet"]) {
+        currSheetMode = changeSizeSheet;
+        [self openAlertSheet: codeAfterOKButton];
+    } else {
+        codeAfterOKButton();
+    }
 }
 
 - (void) doChangeLevel: (id) sender
 {
-  if (puzz.level == [sender tag]) return;
-  
-  AlertBlock codeAfterOKButton = ^(void) {
-    [puzzlePrefs setObject:[NSNumber numberWithInt:[sender tag]] forKey:@"Level"];
-    [self shuffle];
-  };
-  if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ShowChangeLevelSheet"]) {
-    currSheetMode = changeLevelSheet;
-    [self openAlertSheet: codeAfterOKButton];                        
-  } else {
-    codeAfterOKButton();
-  }
+    if (puzz.level == [sender tag]) return;
+    
+    AlertBlock codeAfterOKButton = ^(void) {
+        [puzzlePrefs setObject:[NSNumber numberWithInt:[sender tag]] forKey:@"Level"];
+        [self shuffle];
+    };
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ShowChangeLevelSheet"]) {
+        currSheetMode = changeLevelSheet;
+        [self openAlertSheet: codeAfterOKButton];
+    } else {
+        codeAfterOKButton();
+    }
 }
 
 - (IBAction) doChangeEmptyCell: (id) sender
 {
-  AlertBlock codeAfterOKButton = ^(void) {
-    [puzz reset];
-    [self redrawAll];
-    //Comienza el modo de edici—n de la pieza en blanco.
-    [matrix setAction:@selector(doTakePieceOff:)];
-  };
-
-	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ShowChooseEmptyBlockSheet"]) {
-		currSheetMode = chooseEmptyBlockSheet;
-		[self openAlertSheet: codeAfterOKButton];
-	} else {
-    codeAfterOKButton();
-  }
+    AlertBlock codeAfterOKButton = ^(void) {
+        [puzz reset];
+        [self redrawAll];
+            //Comienza el modo de edici—n de la pieza en blanco.
+        [matrix setAction:@selector(doTakePieceOff:)];
+    };
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ShowChooseEmptyBlockSheet"]) {
+        currSheetMode = chooseEmptyBlockSheet;
+        [self openAlertSheet: codeAfterOKButton];
+    } else {
+        codeAfterOKButton();
+    }
 }
 
-// This method does never get called.
+    // This method does never get called.
 - (void) doChangeBackgroundColor: (id) sender
 {
-	matrixBgColor = [sender color];
-	[matrix setBackgroundColor:matrixBgColor];
-	// TODO: send notification
-	NSMutableDictionary *dict = [NSMutableDictionary 
-															 dictionaryWithObject:[matrix backgroundColor] forKey:@"BackgroundColor"];
-	[[NSNotificationCenter defaultCenter] 
-	 postNotificationName:PZWindowPreferencesUpdated
-	 object:self
-	 userInfo:dict];
+    matrixBgColor = [sender color];
+    [matrix setBackgroundColor:matrixBgColor];
+        // TODO: send notification
+    NSMutableDictionary *dict = [NSMutableDictionary
+                                 dictionaryWithObject:[matrix backgroundColor] forKey:@"BackgroundColor"];
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:PZWindowPreferencesUpdated
+     object:self
+     userInfo:dict];
 }
 
 - (void) doTakePieceOff: (id) sender
 {
-	NSInteger r, c;
-	[matrix getRow:&r column:&c ofCell:[matrix selectedCell]];
-  
-	[puzzlePrefs setObject:[NSNumber numberWithInt:c] forKey:@"EmptyX"];
-  [puzzlePrefs setObject:[NSNumber numberWithInt:r] forKey:@"EmptyY"];
-	[puzz setPrefs:puzzlePrefs];
-  
-	[self takeEmptyPieceOff];
-		// Termina el modo de edici—n de la pieza en blanco.
-	[matrix setAction:@selector(doMovePiece:)];
+    NSInteger r, c;
+    [matrix getRow:&r column:&c ofCell:[matrix selectedCell]];
+    
+    [puzzlePrefs setObject:[NSNumber numberWithInt:c] forKey:@"EmptyX"];
+    [puzzlePrefs setObject:[NSNumber numberWithInt:r] forKey:@"EmptyY"];
+    [puzz setPrefs:puzzlePrefs];
+    
+    [self takeEmptyPieceOff];
+        // Termina el modo de edici—n de la pieza en blanco.
+    [matrix setAction:@selector(doMovePiece:)];
 }
 
 - (void) doShuffle: (id) sender
 {
-  AlertBlock codeAfterOKButton = ^(void) {	[self shuffle]; };
-	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ShowShuffleSheet"]) {
-		currSheetMode = shuffleSheet;
-		[self openAlertSheet: codeAfterOKButton];
-	}	else {
-    codeAfterOKButton();
-  }
+    AlertBlock codeAfterOKButton = ^(void) {	[self shuffle]; };
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ShowShuffleSheet"]) {
+        currSheetMode = shuffleSheet;
+        [self openAlertSheet: codeAfterOKButton];
+    }	else {
+        codeAfterOKButton();
+    }
 }
 
 
 - (void) doRestart: (id) sender
 {
-  AlertBlock codeAfterOKButton = ^(void) { [self restart]; [self takeEmptyPieceOff];};
-	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ShowRestartSheet"]) {
-		currSheetMode = restartSheet;
-		[self openAlertSheet: codeAfterOKButton ];
-	} else
-    codeAfterOKButton();
+    AlertBlock codeAfterOKButton = ^(void) { [self restart]; [self takeEmptyPieceOff];};
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"ShowRestartSheet"]) {
+        currSheetMode = restartSheet;
+        [self openAlertSheet: codeAfterOKButton ];
+    } else
+        codeAfterOKButton();
 }
 
 - (IBAction) doMovePiece: (id) sender
 {
-	NSInteger r, c;
-	[matrix getRow:&r column:&c ofCell:[matrix selectedCell]];
-	[self movePieceAtRow:r column:c];
+    NSInteger r, c;
+    [matrix getRow:&r column:&c ofCell:[matrix selectedCell]];
+    [self movePieceAtRow:r column:c];
 }
 
 - (IBAction) showOrNotAgain: (id) sender
 {
-	NSString *changedKey = [NSString string];
-	NSString *newValue = [NSString string];
-	if ([sender state]) newValue = @"NO";
-	else newValue = @"YES";
-	if (currSheetMode == restartSheet)
-		changedKey = @"ShowRestartSheet";
-	else if (currSheetMode == shuffleSheet)
-		changedKey = @"ShowShuffleSheet";
-	else if (currSheetMode == changeLevelSheet)
-		changedKey = @"ShowChangeLevelSheet";
-	else if (currSheetMode == changeSizeSheet)
-		changedKey = @"ShowChangeSizeSheet";
-	else if (currSheetMode == chooseEmptyBlockSheet)
-		changedKey = @"ShowChooseEmptyBlockSheet";
-	else if (currSheetMode == chooseImageSheet)
-		changedKey = @"ShowChooseImageSheet";
-	[[NSUserDefaults standardUserDefaults] setObject:newValue forKey:changedKey];
+    NSString *changedKey = [NSString string];
+    NSString *newValue = [NSString string];
+    if ([sender state]) newValue = @"NO";
+    else newValue = @"YES";
+    if (currSheetMode == restartSheet)
+        changedKey = @"ShowRestartSheet";
+    else if (currSheetMode == shuffleSheet)
+        changedKey = @"ShowShuffleSheet";
+    else if (currSheetMode == changeLevelSheet)
+        changedKey = @"ShowChangeLevelSheet";
+    else if (currSheetMode == changeSizeSheet)
+        changedKey = @"ShowChangeSizeSheet";
+    else if (currSheetMode == chooseEmptyBlockSheet)
+        changedKey = @"ShowChooseEmptyBlockSheet";
+    else if (currSheetMode == chooseImageSheet)
+        changedKey = @"ShowChooseImageSheet";
+    [[NSUserDefaults standardUserDefaults] setObject:newValue forKey:changedKey];
 }
 
 
-//- (BOOL)validateUserInterfaceItem:(id < NSValidatedUserInterfaceItem >)item
+    //- (BOOL)validateUserInterfaceItem:(id < NSValidatedUserInterfaceItem >)item
 
 - (BOOL) validateMenuItem:(NSMenuItem *)item
 {
-  if ([item action] == @selector(doRestart:)) {
-    if ([puzz isSolved])
-      return NO;
-  } else if ([item action] == @selector(doChangeSize:)) {
-    if ([item tag] == puzz.size.rows)  // FIXME: this sucks
-      [item setState: NSOnState];
-    else
-      [item setState: NSOffState];
-  } else if ([item action] == @selector(doChangeLevel:)) {
-    if ([item tag] == puzz.level)
-      [item setState: NSOnState];
-    else
-      [item setState: NSOffState];
-  } 
-  return YES;
+    if ([item action] == @selector(doRestart:)) {
+        if ([puzz isSolved])
+            return NO;
+    } else if ([item action] == @selector(doChangeSize:)) {
+        if ([item tag] == puzz.size.rows)  // FIXME: this sucks
+            [item setState: NSOnState];
+        else
+            [item setState: NSOffState];
+    } else if ([item action] == @selector(doChangeLevel:)) {
+        if ([item tag] == puzz.level)
+            [item setState: NSOnState];
+        else
+            [item setState: NSOffState];
+    }
+    return YES;
 }
 
 /******************************************************************************
@@ -439,33 +438,33 @@ NSString* PZWindowPreferencesUpdated  = @"PZWindowPreferencesUpdated";
 
 - (IBAction) alertSheetOK: (id) sender
 {
-	[NSApp endSheet: alertSheet returnCode: NSOKButton];
-	[alertSheet orderOut:nil];
+    [NSApp endSheet: alertSheet returnCode: NSOKButton];
+    [alertSheet orderOut:nil];
 }
 
 - (IBAction) alertSheetCancel: (id) sender
 {
-	[NSApp endSheet:alertSheet returnCode: NSCancelButton];
-	[alertSheet orderOut:nil];
+    [NSApp endSheet:alertSheet returnCode: NSCancelButton];
+    [alertSheet orderOut:nil];
 }
 
 - (void) openAlertSheet: (AlertBlock) block
 {
-	[NSApp beginSheet: alertSheet
-		 modalForWindow: [super window]
-			modalDelegate: self
-		 didEndSelector: @selector(alertSheetDidEnd: returnCode: contextInfo:)
-				contextInfo: [block copy]];
+    [NSApp beginSheet: alertSheet
+       modalForWindow: [super window]
+        modalDelegate: self
+       didEndSelector: @selector(alertSheetDidEnd: returnCode: contextInfo:)
+          contextInfo: [block copy]];
 }
 
 - (void) alertSheetDidEnd: (NSWindow *) sheet 
-				 returnCode: (int) returnCode contextInfo: (void *) block 
+               returnCode: (int) returnCode contextInfo: (void *) block 
 {
-	if (returnCode == NSOKButton)
-    ((AlertBlock)block)();
-  
-  [(AlertBlock)block release];
-  
-  [alertSheetCheck setState:NSOffState];
+    if (returnCode == NSOKButton)
+        ((AlertBlock)block)();
+    
+    [(AlertBlock)block release];
+    
+    [alertSheetCheck setState:NSOffState];
 }
 @end

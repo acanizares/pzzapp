@@ -10,9 +10,9 @@
 
 
 @interface PZApplicationDelegate : NSObject <NSApplicationDelegate> {
-
+    
 }
-	
+
 - (IBAction) openAboutWindow: (id) sender;
 - (IBAction) openPreferencesWindow: (id) sender;
 

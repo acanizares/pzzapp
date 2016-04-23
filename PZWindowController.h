@@ -13,19 +13,19 @@
 extern NSString* PZWindowPreferencesUpdated;
 
 typedef enum {
-	none, restartSheet, shuffleSheet,
-	changeLevelSheet, changeSizeSheet,
-	chooseEmptyBlockSheet, chooseImageSheet
+    none, restartSheet, shuffleSheet,
+    changeLevelSheet, changeSizeSheet,
+    chooseEmptyBlockSheet, chooseImageSheet
 } SheetModes;
 
 
-// This is a block (an Obj-C closure)
-// We use them for the sheet dialogs;ü
+    // This is a block (an Obj-C closure)
+    // We use them for the sheet dialogs;ü
 typedef void (^AlertBlock)(void);
 
 
 @interface PZButtonCell : NSButtonCell {
-  CGFloat imageAlpha;   // 1.0 = no transparency
+    CGFloat imageAlpha;   // 1.0 = no transparency
 }
 
 @property CGFloat imageAlpha;
@@ -38,20 +38,23 @@ typedef void (^AlertBlock)(void);
 /*!
  */
 @interface PZWindowController : NSWindowController <NSAnimationDelegate> {
-	PZModel*                    puzz;
-	NSMutableDictionary* puzzlePrefs;	
-	IBOutlet NSMatrix*        matrix;
-  NSColor*           matrixBgColor;
-  
-	IBOutlet NSPanel*       alertSheet;
-	IBOutlet NSButton* alertSheetCheck;
-	SheetModes           currSheetMode;
+    PZModel*                    puzz;
+    NSMutableDictionary* puzzlePrefs;
+    IBOutlet NSMatrix*        matrix;
+    NSColor*           matrixBgColor;
+    
+    IBOutlet NSPanel*       alertSheet;
+    IBOutlet NSButton* alertSheetCheck;
+    SheetModes           currSheetMode;
 }
 
- //- (IBAction) changeImage: (id) sender;
+- (id) initWithPrefs: (NSMutableDictionary*) prefs;
+- (void) changeSizeWithRows: (int) r columns: (int) c;
+
+    //- (IBAction) changeImage: (id) sender;
 - (BOOL) changeImage: (NSImage*) newImage;  // still necessary?
 
- //// UI actions fired through the responder chain
+    //// UI actions fired through the responder chain
 
 - (void) doShuffle: (id) sender;
 - (void) doRestart: (id) sender;
@@ -63,15 +66,15 @@ typedef void (^AlertBlock)(void);
 
 - (void) doChangeBackgroundColor: (id) sender;
 
-  //// The matrix has this as an action (WARNING! don't set the action of the
-  // cells or the matrix' action won't get called after a click.)
+    //// The matrix has this as an action (WARNING! don't set the action of the
+    // cells or the matrix' action won't get called after a click.)
 - (void) doMovePiece: (id) sender;
 
 - (IBAction) showOrNotAgain: (id) sender;
 - (IBAction) alertSheetOK: (id) sender;
 - (IBAction) alertSheetCancel: (id) sender;
 - (void) openAlertSheet: (AlertBlock) code;
-- (void) alertSheetDidEnd: (NSWindow *) sheet 
+- (void) alertSheetDidEnd: (NSWindow *) sheet
                returnCode: (int) returnCode contextInfo: (void *) contextInfo;
 
 @end

@@ -12,11 +12,11 @@ extern int const MAX_COLS;
 extern NSString* PZModelUpdatedNotification;
 extern NSString* PZModelPreferencesUpdated;
 
-  // Why is this an object and not a struct??!?!?!
+    // Why is this an object and not a struct??!?!?!
 @interface PZPos : NSObject
 {
-  NSInteger x;
-  NSInteger y;
+    NSInteger x;
+    NSInteger y;
 }
 
 @property NSInteger x;
@@ -31,11 +31,11 @@ extern NSString* PZModelPreferencesUpdated;
 
 @end
 
-  // Why is this an object and not a struct??!?!?!
+    // Why is this an object and not a struct??!?!?!
 @interface PZSize : NSObject
 {
-  NSInteger rows;
-  NSInteger columns;
+    NSInteger rows;
+    NSInteger columns;
 }
 
 @property NSInteger rows;
@@ -55,18 +55,18 @@ extern NSString* PZModelPreferencesUpdated;
  
  A class extension in PZModel.m defines the internals.
  */
-@interface PZModel : NSObject {  
-  int*                 board;
-	NSMutableArray*     pieces;
-  NSImage*             image;
-  int                  level;
-  PZSize*               size;
-  PZPos*            emptyPos;
-  BOOL             shuffling;
+@interface PZModel : NSObject {
+    int*                 board;
+    NSMutableArray*     pieces;
+    NSImage*             image;
+    int                  level;
+    PZSize*               size;
+    PZPos*            emptyPos;
+    BOOL             shuffling;
 }
 
-// Allow only read access to model properties to ensure internal consistency.
-// Modifications to the model must be done using setPrefs
+    // Allow only read access to model properties to ensure internal consistency.
+    // Modifications to the model must be done using setPrefs
 @property(readonly) int       level;
 @property(readonly) PZSize*    size;
 @property(readonly) PZPos* emptyPos;
