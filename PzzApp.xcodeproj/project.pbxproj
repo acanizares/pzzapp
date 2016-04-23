@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1DDD582C0DA1D0D100B32029 /* PZWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58280DA1D0D100B32029 /* PZWindow.xib */; };
 		1DDD582D0DA1D0D100B32029 /* PzzApp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD582A0DA1D0D100B32029 /* PzzApp.xib */; };
+		491D091F1CCC146F0070EBAA /* puzzle.icns in Resources */ = {isa = PBXBuildFile; fileRef = 491D091E1CCC146F0070EBAA /* puzzle.icns */; };
 		49C516CA152A2B0C002066E7 /* NSUserDefaultsWithExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C516C9152A2B0C002066E7 /* NSUserDefaultsWithExtras.m */; };
 		8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
 		8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165FFE840EACC02AAC07 /* InfoPlist.strings */; };
@@ -38,6 +39,7 @@
 		2A37F4BAFDCFA73011CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = English; path = English.lproj/Credits.rtf; sourceTree = "<group>"; };
 		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		491D091E1CCC146F0070EBAA /* puzzle.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = puzzle.icns; sourceTree = "<group>"; };
 		49C516C8152A2B0C002066E7 /* NSUserDefaultsWithExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSUserDefaultsWithExtras.h; sourceTree = "<group>"; };
 		49C516C9152A2B0C002066E7 /* NSUserDefaultsWithExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSUserDefaultsWithExtras.m; sourceTree = "<group>"; };
 		8D15AC360486D014006FF6A4 /* PzzApp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PzzApp-Info.plist"; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				491D091E1CCC146F0070EBAA /* puzzle.icns */,
 				A135B8F01528CE2600921464 /* Frog.jpeg */,
 				2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */,
 				8D15AC360486D014006FF6A4 /* PzzApp-Info.plist */,
@@ -214,6 +217,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				491D091F1CCC146F0070EBAA /* puzzle.icns in Resources */,
 				8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */,
 				8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */,
 				1DDD582C0DA1D0D100B32029 /* PZWindow.xib in Resources */,
@@ -294,6 +298,7 @@
 				INFOPLIST_FILE = "PzzApp-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = PzzApp;
+				SDKROOT = macosx10.9;
 			};
 			name = Debug;
 		};
@@ -308,6 +313,7 @@
 				INFOPLIST_FILE = "PzzApp-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = PzzApp;
+				SDKROOT = macosx10.9;
 			};
 			name = Release;
 		};
