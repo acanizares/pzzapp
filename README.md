@@ -1,6 +1,6 @@
 # README #
 
-PzzApp is a simple [15-puzzle game](http://en.wikipedia.org/wiki/15_puzzle) written in Cocoa in a 2 day hackathon as our first (and only) program in this language. It is far from being finished but usable. It's also quite pointless in itself.
+PzzApp is a simple [15-puzzle game](http://en.wikipedia.org/wiki/15_puzzle) written in Cocoa in a 2 day hackathon with [Ana Cañizares](https://bitbucket.org/acanizares) as our first (and only) program in this language. It is far from being finished but usable. It's also quite pointless in itself.
 
 ### Setup ###
 
